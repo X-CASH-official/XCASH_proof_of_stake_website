@@ -1,0 +1,69 @@
+
+<mat-toolbar class="cards-header" [style.background-color]="'#327ebd'">
+	<mat-form-field class="example-full-width">
+		<input matInput placeholder="Public Address" #public_address_textbox>
+		</mat-form-field>
+		<div class="center-align"><button mat-raised-button color="primary" (click)="get_public_address_payment_information(public_address_textbox.value);get_public_address_information(public_address_textbox.value);">Continue</button></div>
+</mat-toolbar>
+
+
+<div fxLayout="row" fxLayout="row wrap">
+    <div *ngFor="let dash of dashCard1" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+        <cdk-dashcard [dashData]="dash"></cdk-dashcard>
+    </div>
+</div>
+
+<div fxLayout="row" fxLayout="row wrap">
+    <div *ngFor="let dash of dashCard2" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+        <cdk-dashcard [dashData]="dash"></cdk-dashcard>
+    </div>
+</div>
+
+
+
+<div fxLayout="column"  class="components-container-gt-xs"  [ngClass.xs]="'components-container-xs'"  fxLayoutGap="20px">
+
+	<div fxFlex class="table-component-holder mat-elevation-z4">
+		<mat-toolbar class="table-header">
+			<h1 class="mat-headline center-align" >Payments</h1>
+			<br><br>
+			
+		</mat-toolbar>
+		<div class="table-container">
+			<mat-table #table [dataSource]="dataSource">
+
+				<!--- Note that these columns can be defined in any order.
+				The actual rendered columns are set as a property on the row definition" -->
+				
+				<ng-container matColumnDef="ID">
+					<mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.id | number}} </mat-cell>
+				</ng-container>
+				
+				<ng-container matColumnDef="date_and_time">
+					<mat-header-cell *matHeaderCellDef> TX Date and Time </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.date_and_time | date:'medium'}} </mat-cell>
+				</ng-container>
+				
+				<ng-container matColumnDef="tx_hash">
+					<mat-header-cell *matHeaderCellDef> TX Hash </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.tx_hash}} </mat-cell>
+				</ng-container>	
+
+				<ng-container matColumnDef="tx_key">
+					<mat-header-cell *matHeaderCellDef> TX Key </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.tx_key}} </mat-cell>
+				</ng-container>	
+
+				<ng-container matColumnDef="total">
+					<mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.total | number}} </mat-cell>
+				</ng-container>	
+								
+				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+				<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+				
+			</mat-table>
+		</div>
+	</div>
+</div>
