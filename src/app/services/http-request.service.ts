@@ -5,11 +5,11 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 export class httpdataservice{
 constructor(private httpClient: HttpClient) {}
 
-SERVER_HOSTNAME_AND_PORT_GET_STATISTICS:string = "http://localhost:8000/getstatistics";
-SERVER_HOSTNAME_AND_PORT_GET_BLOCKS_FOUND:string = "http://localhost:8000/getblocksfound";
-SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_INFORMATION:string = "http://localhost:8000/getpublicaddressinformation";
-SERVER_HOSTNAME_AND_PORT_GET_VOTERS_LIST:string = "http://localhost:8000/getvoterslist";
-SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION:string = "http://localhost:8000/getpublicaddresspaymentinformation";
+SERVER_HOSTNAME_AND_PORT_GET_STATISTICS:string = "http://localhost/getstatistics";
+SERVER_HOSTNAME_AND_PORT_GET_BLOCKS_FOUND:string = "http://localhost/getblocksfound";
+SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_INFORMATION:string = "http://localhost/getpublicaddressinformation";
+SERVER_HOSTNAME_AND_PORT_GET_VOTERS_LIST:string = "http://localhost/getvoterslist";
+SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION:string = "http://localhost/getpublicaddresspaymentinformation";
 
 Timer:any;
 
