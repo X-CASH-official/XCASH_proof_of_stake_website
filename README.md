@@ -53,7 +53,7 @@ Now you need to update NPM
 Now you need to install Angular globally  
 `npm install -g @angular/cli@latest`
 
-Then you need to install Uglifyjs globally
+Then you need to install Uglifyjs globally  
 `npm install -g uglify-js`
 
 
@@ -107,9 +107,9 @@ To build X-CASH Proof of Stake - Shared Delegates Website Server, naviagte to th
 `ng build --prod --aot`
 
 It will then create a dist folder, compress the javascript using Uglify-JS and move all of the contents of this folder to your html folder for NGINX.  
-`cd FOLDER_LOCATION_OF_DIST_FOLDER`
-`for f in *.js; do echo "Processing $f file.."; uglifyjs $f --compress --mangle --output "{$f}min"; rm $f; mv "{$f}min" $f; done`
-`rm /var/www/YOUR_DOMANIN_NAME_OR_IP_ADDRESS_OF_SERVER/html/* && rm -r /var/www/YOUR_DOMANIN_NAME_OR_IP_ADDRESS_OF_SERVER/html/*`
+`cd FOLDER_LOCATION_OF_DIST_FOLDER`  
+`for f in *.js; do echo "Processing $f file.."; uglifyjs $f --compress --mangle --output "{$f}min"; rm $f; mv "{$f}min" $f; done`  
+`rm /var/www/YOUR_DOMANIN_NAME_OR_IP_ADDRESS_OF_SERVER/html/* && rm -r /var/www/YOUR_DOMANIN_NAME_OR_IP_ADDRESS_OF_SERVER/html/*`  
 `cp -a dist/* /var/www/YOUR_DOMANIN_NAME_OR_IP_ADDRESS_OF_SERVER/html/`
 
 
