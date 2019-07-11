@@ -6,6 +6,17 @@ Forked from [cdk-admin](https://github.com/codetok/cdk-admin), an Angular 6 admi
 
 This is the website for the [X-CASH Proof of Stake - Shared Delegates Website Server](https://github.com/X-CASH-official/XCASH_proof_of_stake_shared_delegates_website_server)
 
+This website will allow for users to
+* A dashboard that will show how to vote for the delegate, the delegate fee, and how many blocks the delegate has found
+* A place to view a detailed list of the blocks found by the delegate
+* A place to view how many votes the delegate has and what public addresses, with their reserve proofs have voted for the delegate
+* A place to view how many payments and how much X-CASH the delegate has paid
+* A place to view how much X-CASH a user has earned from staking with the delegate
+
+This website is for delegates that are planning to get elected by others voting for them. It provided an automatic way to pay users that have voted for you, and provided them an automatic way for them to view their payment history.
+This website is not needed for a delegate that plans on only voting for themselves to be elected for the block verifiers.
+
+
 ## Installation
 
 
