@@ -47,7 +47,7 @@ Then add Node.js to your path (replace "Node.js_folder" with the location of the
 `echo -e '\nexport PATH=Node.js_folder:$PATH' >> ~/.profile && source ~/.profile`
 
 Note if your installing this on a root account (not recommend) then you need to run these additional commands  
-`npm config set user 0`
+`npm config set user 0`  
 `npm config set unsafe-perm true`
 
 
@@ -119,10 +119,11 @@ To build X-CASH Proof of Stake - Shared Delegates Website Server, naviagte to th
 
 It will then create a dist folder, compress the javascript using Uglify-JS and move all of the contents of this folder to your html folder for NGINX.  
 ``` 
-cd FOLDER_LOCATION_OF_DIST_FOLDER
-for f in *.js; do echo "Processing $f file.."; uglifyjs $f --compress --mangle --output "{$f}min"; rm $f; mv "{$f}min" $f; done 
-rm /var/www/YOUR_DOMANIN_NAME_OR_IP_ADDRESS_OF_SERVER/html/* && rm -r /var/www/YOUR_DOMANIN_NAME_OR_IP_ADDRESS_OF_SERVER/html/* 
-cp -a dist/* /var/www/YOUR_DOMANIN_NAME_OR_IP_ADDRESS_OF_SERVER/html/
+cd dist  
+for f in *.js; do echo "Processing $f file.."; uglifyjs $f --compress --mangle --output "{$f}min"; rm $f; mv "{$f}min" $f; done  
+rm /var/www/YOUR_DOMANIN_NAME_OR_IP_ADDRESS_OF_SERVER/html/* && rm -r /var/www/YOUR_DOMANIN_NAME_OR_IP_ADDRESS_OF_SERVER/html/*  
+cd ../  
+cp -a dist/* /var/www/YOUR_DOMANIN_NAME_OR_IP_ADDRESS_OF_SERVER/html/  
 ```
 
 
