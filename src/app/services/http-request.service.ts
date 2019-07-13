@@ -13,6 +13,11 @@ SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION:string = "/getpu
 
 Timer:any;
 
+sleep(milliseconds)
+{
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
 get_request(url:string)
 {
 return this.httpClient.get(url);

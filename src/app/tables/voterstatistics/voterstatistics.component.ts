@@ -30,7 +30,7 @@ export class voterstatisticsComponent implements OnInit {
   	ngOnInit() {
 
 	}
-	
+
 	get_public_address_payment_information(public_address:string)
 	{
           // get the data
@@ -62,15 +62,18 @@ export class voterstatisticsComponent implements OnInit {
 
 
 
-        get_public_address_information(public_address:string)
+        async get_public_address_information(public_address:string)
 	{
           // get the data
 	  this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_INFORMATION + "?public_address=" + public_address).subscribe(
-	  (res) =>
+	  async (res) =>
 	  {
             var data = JSON.parse(JSON.stringify(res));            
 	    this.dashCard1[0].number = data.current_total;
             this.dashCard2[1].number = data.inactivity_count;
+
+            await this.httpdataservice.sleep(200);
+            this.get_public_address_payment_information(public_address);
 	  },
 	  (error) => 
           {
