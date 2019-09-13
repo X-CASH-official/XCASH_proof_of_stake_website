@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 export class httpdataservice{
 constructor(private httpClient: HttpClient) {}
 
-SERVER_HOSTNAME_AND_PORT_GET_STATISTICS:string = "/getstatistics";
+SERVER_HOSTNAME_AND_PORT_GET_STATISTICS:string = "/shareddelegateswebsitegetstatistics";
 SERVER_HOSTNAME_AND_PORT_GET_BLOCKS_FOUND:string = "/getblocksfound";
 SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_INFORMATION:string = "/getpublicaddressinformation";
 SERVER_HOSTNAME_AND_PORT_GET_VOTERS_LIST:string = "/getvoterslist";
