@@ -15,7 +15,7 @@ export class blocksfoundComponent implements OnInit {
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'AVERAGE', icon: 'cloud' }
     ];
 	total_blocks_found:any = 0;
-	total_average:any = 0;
+	total_average:number = 0;
 	public displayedColumns = ['ID', 'block_height', 'block_hash', 'block_date_and_time', 'block_reward', 'average'];
 	public exampleDatabase = new ExampleDatabase();
 	public dataSource: ExampleDataSource | null;
@@ -33,9 +33,10 @@ export class blocksfoundComponent implements OnInit {
 	    for (count = 0; count < data.length - 1; count++)
 	    {
 	      this.exampleDatabase.addUser((count + 1).toString(),data[count].block_height.toString(),data[count].block_hash.toString(),(parseInt(data[count].block_date_and_time) * 1000).toString(),(parseInt(data[count].block_reward)).toString(),data[count].block_count.toString());
+              this.total_average += data[count].block_count;
 	    }
 	    this.dashCard[0].number = data.length - 1;
-            this.dashCard[1].number = (parseInt(data[data.length-1].total_blocks) / parseInt(data[data.length-1].total_blocks_found)) | 0;	
+            this.dashCard[1].number = this.total_average | 0;
   	    this.dataSource = new ExampleDataSource(this.exampleDatabase);
 	  },
 	  (error) => 
