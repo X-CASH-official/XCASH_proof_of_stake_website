@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class blocksfoundComponent implements OnInit {
 	public dashCard = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'BLOCKS FOUND', icon: 'cloud' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'AVERAGE', icon: 'cloud' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'BLOCKS FOUND', icon: 'assignments' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'AVERAGE', icon: 'done' }
     ];
 	total_blocks_found:any = 0;
 	total_average:number = 0;

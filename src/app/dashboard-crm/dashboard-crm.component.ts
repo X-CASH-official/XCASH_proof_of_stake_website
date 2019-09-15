@@ -13,14 +13,14 @@ export class DashboardCrmComponent implements OnInit {
     delegatestatistics:string;
     delegateprofileinformation:string;
     public dashCard1 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL BLOCKS FOUND', icon: 'cloud' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL BLOCKS FOUND', icon: 'assignments' },
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL XCASH', icon: 'cloud' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL PAYMENTS', icon: 'cloud' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL PAYMENTS', icon: 'info' }
     ];
     public dashCard2 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL VOTE COUNT', icon: 'cloud' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'FEE', icon: 'cloud' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'MINIMUM AMOUNT', icon: 'cloud' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL VOTE COUNT', icon: 'done' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'FEE', icon: 'info' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'MINIMUM AMOUNT', icon: 'info' }
     ];
 
     constructor(private httpdataservice: httpdataservice) { }
