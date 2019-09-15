@@ -94,6 +94,18 @@ Swal.fire({
   showCancelButton: false,
 })
     }
+else if (data === "getdelegatesvoterslist")
+    {
+Swal.fire({
+  title: '<b>Get Delegates Voters List</b>',
+  type: 'info',
+  width: this.width,
+  customClass: 'swal-height',
+  html: 'Get a list of all delegates staking towards the shared delegate<br><br>Method: GET<br><br>URL: /getdelegatesvoterslist<br><br>Parameters: parameter1: The public address of the shared delegate<br><br>Result:<br><br>public_address_created_reserve_proof: The public address of the delegate that is staking towards the shared delegate<br><br>public_address_voted_for: The public address of the shared delegate<br><br>total: The total amount of the reserve proof<br><br>reserve_proof: The reserve proof created by the delegate<br><br>[{"public_address_created_reserve_proof":"XCA1VSDHKCc4Qhvqb3fquebSYxfMeyGteQeAYtDSpaTcgquBY1bkKWtQ42tZG2w7Ak7GyqnaiTgWL4bMHE9Lwd2A3g2Recxz7B","public_address_voted_for":"XCA1v18Qsf5PKLr8GFr14jHkjgf3mPm1MAVbswBs9QP7FwGTLCE4SwYi81BRp2vrcV12maMtCw9TE1NZRVyynQ3e2c3b7mxRw3","total":"10","reserve_proof":"RESERVE_PROOF"},{"public_address_created_reserve_proof":"XCA1VSDHKCc4Qhvqb3fquebSYxfMeyGteQeAYtDSpaTcgquBY1bkKWtQ42tZG2w7Ak7GyqnaiTgWL4bMHE9Lwd2A3g2Recxz7B","public_address_voted_for":"XCA1v18Qsf5PKLr8GFr14jHkjgf3mPm1MAVbswBs9QP7FwGTLCE4SwYi81BRp2vrcV12maMtCw9TE1NZRVyynQ3e2c3b7mxRw3","total":"10","reserve_proof":"RESERVE_PROOF"}]',
+  showCloseButton: false,
+  showCancelButton: false,
+})
+    }
 }
 
     ngOnInit() {
