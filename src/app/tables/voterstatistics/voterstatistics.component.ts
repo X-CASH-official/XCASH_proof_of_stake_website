@@ -1,4 +1,5 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import {httpdataservice} from '../../services/http-request.service';
 import Swal from 'sweetalert2';
@@ -19,16 +20,28 @@ export class voterstatisticsComponent implements OnInit {
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL NUMBER OF PAYMENTS', icon: 'cloud' },
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'INACTIVITY_TOTAL', icon: 'cloud' }
     ];
+        XCASH_WALLET_LENGTH:number = 98
+        XCASH_WALLET_PREFIX:string = "XCA"
+        public_address:string;
 	total_amount_paid:any = 0;
 	total_number_of_payments:any = 0;
 	public displayedColumns = ['ID', 'date_and_time', 'tx_hash', 'tx_key', 'total'];
 	public exampleDatabase;
 	public dataSource: ExampleDataSource | null;
   	public showFilterTableCode;
-  	constructor(private httpdataservice: httpdataservice) { }
+  	constructor(private route: ActivatedRoute, private httpdataservice: httpdataservice) { }
 
-  	ngOnInit() {
+  	ngOnInit()
+        {
+          this.public_address = this.route.snapshot.queryParamMap.get("data");
 
+          if (this.public_address.length !== this.XCASH_WALLET_LENGTH || this.public_address.substr(0,3) !== this.XCASH_WALLET_PREFIX)
+          {
+            Swal.fire("Error","An error has occured","error");
+            return;
+          }
+
+          this.get_public_address_information(this.public_address);
 	}
 
 	get_public_address_payment_information(public_address:string)

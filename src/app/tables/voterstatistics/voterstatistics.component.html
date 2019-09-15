@@ -1,12 +1,3 @@
-
-<mat-toolbar class="cards-header" [style.background-color]="'#327ebd'">
-	<mat-form-field class="example-full-width">
-		<input matInput placeholder="Public Address" #public_address_textbox>
-		</mat-form-field>
-		<div class="center-align"><button mat-raised-button color="primary" (click)="get_public_address_information(public_address_textbox.value);">Continue</button></div>
-</mat-toolbar>
-
-
 <div fxLayout="row" fxLayout="row wrap">
     <div *ngFor="let dash of dashCard1" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
         <cdk-dashcard [dashData]="dash"></cdk-dashcard>

@@ -17,12 +17,6 @@ export const menus = [
         'link': 'tables/voterslist',
         'icon': 'cloud',
     },
-    {
-        'name': 'Voter Statistics',
-        'open': false,
-        'link': 'tables/voterstatistics',
-        'icon': 'cloud',
-    },
   /*  {
         'name': 'Material Widget',
         'icon': 'widgets',

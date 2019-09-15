@@ -12,4 +12,9 @@ export class SearchBarComponent implements OnInit {
 
 	ngOnInit() {}
 
+ get_delegates_information(delegates_information:any)
+ {
+   window.location.href = `/auth/tables/voterstatistics?data=${delegates_information}`;
+ }
+
 }
