@@ -30,13 +30,13 @@ export class blocksfoundComponent implements OnInit {
             this.exampleDatabase = new ExampleDatabase();
             var data = JSON.parse(JSON.stringify(res));
 	    var count = 0;
-	    for (count = 0; count < data.length - 1; count++)
+	    for (count = 0; count < data.length; count++)
 	    {
 	      this.exampleDatabase.addUser((count + 1).toString(),data[count].block_height.toString(),data[count].block_hash.toString(),(parseInt(data[count].block_date_and_time) * 1000).toString(),(parseInt(data[count].block_reward)).toString(),data[count].block_count.toString());
-              this.total_average += data[count].block_count;
+              this.total_average += parseInt(data[count].block_count);
 	    }
-	    this.dashCard[0].number = data.length - 1;
-            this.dashCard[1].number = this.total_average | 0;
+	    this.dashCard[0].number = data.length;
+            this.dashCard[1].number = (this.total_average / data.length) | 0;
   	    this.dataSource = new ExampleDataSource(this.exampleDatabase);
 	  },
 	  (error) => 
