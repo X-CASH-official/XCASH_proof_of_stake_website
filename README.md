@@ -17,7 +17,7 @@ This website will give users
 This website is for delegates that are planning to get elected by others voting for them. It provides an automatic way to pay users that have voted for you, and provides them an automatic way for them to view their payment history.
 This website is not needed for a solo delegate.
 
-**If you plan on running a shared delegates website or a delegates website, you will need to run the website on the same system as the DPOPS node**
+**If you plan on running a shared delegates website, you will need to run the website on the same system as the DPOPS node**
 
 
 
@@ -47,7 +47,7 @@ Bandwidth Speed: 100 Mbps
  
 ## Dependencies
 
-The following table summarizes the tools and libraries required to run XCASH DPOPS - Shared Delegate Website
+The following table summarizes the tools and libraries required to run XCASH DPOPS - Delegate Website
 
 | Dependencies                                 | Min. version  | Ubuntu package            |
 | -------------------------------------------- | ------------- | ------------------------- |
@@ -64,15 +64,26 @@ The readme shows you how to setup the website using HTTP, since there is no sens
 ## Installation Process
 
 
+### Installation Path
+It is recommend to install the nodejs folder in the home directory (`/home/$USER/`) or root directory (`/root/`) in a `Installed-Programs` folder
+
+
 
 
 ### Installing Node.js from binaries
 
-Visit [https://nodejs.org/en/download/current/](https://nodejs.org/en/download/current/) and download the "Linux Binaries" download and copy it to a folder
+Visit [https://nodejs.org/en/download/current/](https://nodejs.org/en/download/current/) and download the "Linux Binaries" download and copy it to a folder. Then run these commands  
+``` 
+tar -xf node*.tar.xz
+rm node*.tar.xz
+```
 
 Then add Node.js to your path (replace "Node.js_folder" with the location of the bin folder in the folder you installed Node.js in  
 `echo -e '\nexport PATH=Node.js_folder:$PATH' >> ~/.profile && source ~/.profile`
 
+
+
+### Configuring NPM If Root
 Note if your installing this on a root account then you need to run these additional commands  
 `npm config set user 0`  
 `npm config set unsafe-perm true`
@@ -93,6 +104,15 @@ Now you need to install Angular globally
 
 Then you need to install Uglifyjs globally  
 `npm install -g uglify-js`
+
+
+
+### Cloning the Repository
+```
+cd ~/Installed-Programs 
+git clone https://github.com/X-CASH-official/XCASH_DPOPS_shared_delegates_website.git
+```
+ 
 
 
 
@@ -118,9 +138,9 @@ It will then create a dist folder, compress the javascript using Uglify-JS and m
 ``` 
 cd dist  
 for f in *.js; do echo "Processing $f file.."; uglifyjs $f --compress --mangle --output "{$f}min"; rm $f; mv "{$f}min" $f; done  
-rm -r /PATH_TO_XCASH_DPOPS_FOLDER/shared_delegates_website/* && rm /PATH_TO_XCASH_DPOPS_FOLDER/shared_delegates_website/*   
+rm -r ~/Installed-Programs/XCASH_DPOPS/shared_delegates_website/* && rm ~/Installed-Programs/XCASH_DPOPS/shared_delegates_website/*   
 cd ../  
-cp -a dist/* /PATH_TO_XCASH_DPOPS_FOLDER/shared_delegates_website/ 
+cp -a dist/* ~/Installed-Programs/XCASH_DPOPS/shared_delegates_website/ 
 ```
 
 
