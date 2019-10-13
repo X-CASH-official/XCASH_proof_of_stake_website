@@ -56,11 +56,13 @@ export class voterstatisticsComponent implements OnInit {
             var data = JSON.parse(JSON.stringify(res));
             this.total_number_of_payments = data.length;
 	    var count = 0;
+            var total;
 	    for (count = 0; count < this.total_number_of_payments; count++)
 	    {
 	      // calculate the total amount paid
-	      this.total_amount_paid += parseInt(data[count].total);
-	      this.exampleDatabase.addUser((count + 1).toString(),(parseInt(data[count].date_and_time) * 1000).toString(),data[count].tx_hash.toString(),data[count].tx_key.toString(),data[count].total.toString());
+              total = parseInt(data[count].total) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+	      this.total_amount_paid += total;
+	      this.exampleDatabase.addUser((count + 1).toString(),(parseInt(data[count].date_and_time) * 1000).toString(),data[count].tx_hash.toString(),data[count].tx_key.toString(),total.toString());
 	    }
 	    this.dashCard1[1].number = this.total_amount_paid;
 	    this.dashCard2[0].number = this.total_number_of_payments;	

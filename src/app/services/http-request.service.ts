@@ -10,6 +10,7 @@ SERVER_HOSTNAME_AND_PORT_GET_BLOCKS_FOUND:string = "/getblocksfound";
 SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_INFORMATION:string = "/getpublicaddressinformation";
 SERVER_HOSTNAME_AND_PORT_GET_DELEGATES_VOTERS_LIST:string = "/getdelegatesvoterslist";
 SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION:string = "/getpublicaddresspaymentinformation";
+XCASH_WALLET_DECIMAL_PLACES_AMOUNT:number = 1000000;
 
 Timer:any;
 

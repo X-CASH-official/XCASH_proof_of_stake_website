@@ -13,12 +13,17 @@ export class DashboardCrmComponent implements OnInit {
     delegatestatistics:string;
     delegateprofileinformation:string;
     public dashCard1 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL BLOCKS FOUND', icon: 'assignments' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL XCASH', icon: 'cloud' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL PAYMENTS', icon: 'info' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'CURRENT DELEGATE RANK', icon: 'info' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL_VOTES', icon: 'info' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'ONLINE PERCENTAGE', icon: 'info' }
     ];
     public dashCard2 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL VOTE COUNT', icon: 'done' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL BLOCKS FOUND', icon: 'assignments' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL XCASH FROM BLOCKS FOUND', icon: 'cloud' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL PAYMENTS', icon: 'info' }
+    ];
+    public dashCard3 = [
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL VOTERS', icon: 'done' },
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'FEE', icon: 'info' },
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'MINIMUM AMOUNT', icon: 'info' }
     ];
@@ -34,12 +39,15 @@ export class DashboardCrmComponent implements OnInit {
             this.public_address = data.public_address; 
             this.delegatestatistics = "website/auth/tables/delegates_statistics?data=" + this.public_address;   
             this.delegateprofileinformation = "website/auth/delegates_information?data=" + this.public_address; 
-	    this.dashCard1[0].number = data.total_blocks_found;
-            this.dashCard1[1].number = data.total_xcash;
-            this.dashCard1[2].number = data.total_payments;
-	    this.dashCard2[0].number = data.total_vote_count;
-            this.dashCard2[1].number = data.fee;
-            this.dashCard2[2].number = data.minimum_amount;
+            this.dashCard1[0].number = data.current_delegate_rank;
+            this.dashCard1[1].number = parseInt(data.total_votes) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+            this.dashCard1[2].number = data.online_percentage;
+	    this.dashCard2[0].number = data.total_blocks_found;
+            this.dashCard2[1].number = parseInt(data.total_xcash_from_blocks_found) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+            this.dashCard2[2].number = data.total_payments;
+	    this.dashCard3[0].number = data.total_voters;
+            this.dashCard3[1].number = data.fee;
+            this.dashCard3[2].number = data.minimum_amount;
 	  },
 	  (error) => 
           {

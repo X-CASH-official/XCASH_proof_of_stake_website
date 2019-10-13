@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class voterslistComponent implements OnInit {
 	public dashCard = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL VOTE COUNT', icon: 'cloud' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'CURRENT VOTE COUNT', icon: 'done' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL VOTES', icon: 'cloud' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL VOTERS', icon: 'done' }
     ];
 	total_vote_count:any = 0;
 	amount_of_votes:any = 0;
@@ -43,10 +43,12 @@ export class voterslistComponent implements OnInit {
 	      this.total_vote_count = 0;	
 	      this.amount_of_votes = data.length;
 	      var count = 0;
+              var total = 0;
               for (count = 0; count < this.amount_of_votes; count++)
 	      {
-                this.total_vote_count += parseInt(data[count].total);
-	        this.exampleDatabase.addUser((count + 1).toString(),data[count].public_address_created_reserve_proof.toString(),data[count].total.toString(),data[count].reserve_proof.toString());
+                total = parseInt(data[count].total) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+                this.total_vote_count += total;
+	        this.exampleDatabase.addUser((count + 1).toString(),data[count].public_address_created_reserve_proof.toString(),total.toString(),data[count].reserve_proof.toString());
 	      }
 	      this.dashCard[0].number = this.total_vote_count;
 	      this.dashCard[1].number = this.amount_of_votes;	
