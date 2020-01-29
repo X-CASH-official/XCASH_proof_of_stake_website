@@ -22,7 +22,7 @@ export class voterstatisticsComponent implements OnInit {
     ];
         XCASH_WALLET_LENGTH:number = 98
         XCASH_WALLET_PREFIX:string = "XCA"
-        public_address:string;
+        public_address:string = "";
 	total_amount_paid:any = 0;
 	total_number_of_payments:any = 0;
 	public displayedColumns = ['ID', 'date_and_time', 'tx_hash', 'tx_key', 'total'];
