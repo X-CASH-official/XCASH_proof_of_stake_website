@@ -22,7 +22,7 @@ export class voterstatisticsComponent implements OnInit {
     ];
         XCASH_WALLET_LENGTH:number = 98
         XCASH_WALLET_PREFIX:string = "XCA"
-        public_address:string = "";
+        public public_address:string = "";
 	total_amount_paid:any = 0;
 	total_number_of_payments:any = 0;
 	public displayedColumns = ['ID', 'date_and_time', 'tx_hash', 'tx_key', 'total'];
@@ -33,21 +33,13 @@ export class voterstatisticsComponent implements OnInit {
 
   	ngOnInit()
         {
-          this.public_address = this.route.snapshot.queryParamMap.get("data");
-
-          if (this.public_address.length !== this.XCASH_WALLET_LENGTH || this.public_address.substr(0,3) !== this.XCASH_WALLET_PREFIX)
-          {
-            Swal.fire("Error","An error has occured","error");
-            return;
-          }
-
-          this.get_public_address_information(this.public_address);
+          this.get_public_address_information(this.route.snapshot.queryParamMap.get("data"));
 	}
 
-	get_public_address_payment_information(public_address:string)
+	get_public_address_payment_information(data:string)
 	{
           // get the data
-	  this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION + "?public_address=" + public_address).subscribe(
+	  this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION + "?public_address=" + data).subscribe(
 	  (res) =>
 	  {
             this.total_amount_paid = 0;
@@ -77,10 +69,10 @@ export class voterstatisticsComponent implements OnInit {
 
 
 
-        async get_public_address_information(public_address:string)
+        async get_public_address_information(data:string)
 	{
           // get the data
-	  this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_INFORMATION + "?public_address=" + public_address).subscribe(
+	  this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_INFORMATION + "?public_address=" + data).subscribe(
 	  async (res) =>
 	  {
             var data = JSON.parse(JSON.stringify(res));            
@@ -88,7 +80,7 @@ export class voterstatisticsComponent implements OnInit {
             this.dashCard2[1].number = data.inactivity_count;
 
             await this.httpdataservice.sleep(200);
-            this.get_public_address_payment_information(public_address);
+            this.get_public_address_payment_information(data);
 	  },
 	  (error) => 
           {

@@ -1,12 +1,12 @@
 <div fxLayout="row" fxLayout="row wrap">
-    <div *ngFor="let dash of dashCard1" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
-        <cdk-dashcard [dashData]="dash"></cdk-dashcard>
+    <div *ngFor="let dash of dashCard1; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+        <cdk-dashcard id="dashcard{{count+1}}" [dashData]="dash"></cdk-dashcard>
     </div>
 </div>
 
 <div fxLayout="row" fxLayout="row wrap">
-    <div *ngFor="let dash of dashCard2" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
-        <cdk-dashcard [dashData]="dash"></cdk-dashcard>
+    <div *ngFor="let dash of dashCard2; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+        <cdk-dashcard id="dashcard{{count+3}}" [dashData]="dash"></cdk-dashcard>
     </div>
 </div>
 
@@ -21,34 +21,34 @@
 			
 		</mat-toolbar>
 		<div class="table-container">
-			<mat-table #table [dataSource]="dataSource">
+			<mat-table #table id="transactions_table" [dataSource]="dataSource">
 
 				<!--- Note that these columns can be defined in any order.
 				The actual rendered columns are set as a property on the row definition" -->
 				
 				<ng-container matColumnDef="ID">
 					<mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.id | number}} </mat-cell>
+					<mat-cell id="id{{row.id}}" *matCellDef="let row"> {{row.id | number}} </mat-cell>
 				</ng-container>
 				
 				<ng-container matColumnDef="date_and_time">
 					<mat-header-cell *matHeaderCellDef> TX Date and Time </mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.date_and_time | date:'medium'}} </mat-cell>
+					<mat-cell id="date_and_time{{row.id}}" *matCellDef="let row"> {{row.date_and_time | date:'medium'}} </mat-cell>
 				</ng-container>
 				
 				<ng-container matColumnDef="tx_hash">
 					<mat-header-cell *matHeaderCellDef> TX Hash </mat-header-cell>
-                                        <mat-cell *matCellDef="let row"><a class="text-primary" href="https://explorer.x-cash.org/Transaction?data={{row.tx_hash}}" target="_blank"><h3>{{row.tx_hash}}</h3></a></mat-cell>
+                    <mat-cell id="tx_hash{{row.id}}" *matCellDef="let row"><a class="text-primary" href="https://explorer.x-cash.org/Transaction?data={{row.tx_hash}}" target="_blank"><h3>{{row.tx_hash}}</h3></a></mat-cell>
 				</ng-container>	
 
 				<ng-container matColumnDef="tx_key">
 					<mat-header-cell *matHeaderCellDef> TX Key </mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.tx_key}} </mat-cell>
+					<mat-cell id="tx_key{{row.id}}" *matCellDef="let row"> {{row.tx_key}} </mat-cell>
 				</ng-container>	
 
 				<ng-container matColumnDef="total">
 					<mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.total | number}} </mat-cell>
+					<mat-cell id="total{{row.id}}" *matCellDef="let row"> {{row.total | number}} </mat-cell>
 				</ng-container>	
 								
 				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

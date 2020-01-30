@@ -1,21 +1,21 @@
 <div fxLayout="row" fxLayout="row wrap">
-    <div *ngFor="let dash of dashCard1" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
-        <cdk-dashcard [dashData]="dash"></cdk-dashcard>
+    <div *ngFor="let dash of dashCard1; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+        <cdk-dashcard id="dashcard{{count+1}}" [dashData]="dash"></cdk-dashcard>
     </div>
 </div>
 <div fxLayout="row" fxLayout="row wrap">
-    <div *ngFor="let dash of dashCard2" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
-        <cdk-dashcard [dashData]="dash"></cdk-dashcard>
+    <div *ngFor="let dash of dashCard2; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+        <cdk-dashcard id="dashcard{{count+4}}" [dashData]="dash"></cdk-dashcard>
     </div>
 </div>
 <div fxLayout="row" fxLayout="row wrap">
-    <div *ngFor="let dash of dashCard3" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
-        <cdk-dashcard [dashData]="dash"></cdk-dashcard>
+    <div *ngFor="let dash of dashCard3; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+        <cdk-dashcard id="dashcard{{count+7}}" [dashData]="dash"></cdk-dashcard>
     </div>
 </div>
 
 <div fxLayout="row" fxLayout="row wrap" fxLayoutAlign="center">    
-    <cdk-profile-card [title]="'Public Address'" [settings]="{'min-height': '0%'}" [data_settings]="{'margin-top': '0%'}" [text_settings]="{'margin-top': '0%'}" [data]="public_address" [button_name]="'Copy'" [button_length]="{'width': '25%'}" [button_click]="'copy'" fxFlex="100" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="30"></cdk-profile-card>
-    <cdk-profile-card [title]="'View Delegate Statistics'" [settings]="{'min-height': '0%'}" [data_settings]="{'margin-top': '0%'}" [text_settings]="{'margin-top': '0%'}" [data]="" [button_name]="'View Delegate Statistics'" [button_length]="{'width': '25%'}" [button_click]="delegatestatistics" fxFlex="100" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="30"></cdk-profile-card>
-    <cdk-profile-card [title]="'View Delegate Profile Information'" [settings]="{'min-height': '0%'}" [data_settings]="{'margin-top': '0%'}" [text_settings]="{'margin-top': '0%'}" [data]="" [button_name]="'View Delegate Profile Information'" [button_length]="{'width': '25%'}" [button_click]="delegateprofileinformation" fxFlex="100" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="30"></cdk-profile-card>
+    <cdk-profile-card id="profilecard1" [title]="'Public Address'" [settings]="{'min-height': '0%'}" [data_settings]="{'margin-top': '0%'}" [text_settings]="{'margin-top': '0%'}" [data]="public_address" [button_name]="'Copy'" [button_length]="{'width': '25%'}" [button_click]="'copy'" fxFlex="100" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="30"></cdk-profile-card>
+    <cdk-profile-card id="profilecard2" [title]="'View Delegate Statistics'" [settings]="{'min-height': '0%'}" [data_settings]="{'margin-top': '0%'}" [text_settings]="{'margin-top': '0%'}" [data]="" [button_name]="'View Delegate Statistics'" [button_length]="{'width': '25%'}" [button_click]="delegatestatistics" fxFlex="100" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="30"></cdk-profile-card>
+    <cdk-profile-card id="profilecard3" [title]="'View Delegate Profile Information'" [settings]="{'min-height': '0%'}" [data_settings]="{'margin-top': '0%'}" [text_settings]="{'margin-top': '0%'}" [data]="" [button_name]="'View Delegate Profile Information'" [button_length]="{'width': '25%'}" [button_click]="delegateprofileinformation" fxFlex="100" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="30"></cdk-profile-card>
 </div>
