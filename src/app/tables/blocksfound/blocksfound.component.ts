@@ -35,10 +35,14 @@ export class blocksfoundComponent implements OnInit {
 	    {
               block_reward = parseInt(data[count].block_reward) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
 	      this.exampleDatabase.addUser((count + 1).toString(),data[count].block_height.toString(),data[count].block_hash.toString(),(parseInt(data[count].block_date_and_time) * 1000).toString(),block_reward.toString(),data[count].block_count.toString());
-              this.total_average += parseInt(data[count].block_count);
+              if (count != 0)
+              {
+                this.total_average += parseInt(data[count].block_height - data[count-1].block_height);
+              }
 	    }
+            this.total_average = (this.total_average / data.length) | 0;
 	    this.dashCard[0].number = data.length;
-            this.dashCard[1].number = (this.total_average / data.length) | 0;
+            this.dashCard[1].number = this.total_average;
   	    this.dataSource = new ExampleDataSource(this.exampleDatabase);
 	  },
 	  (error) => 
