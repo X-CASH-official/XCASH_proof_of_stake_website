@@ -1,4 +1,4 @@
-# XCASH_DPOPS - Shared Delegates Website
+# Delegates Pool Website
 
 Forked from [cdk-admin](https://github.com/codetok/cdk-admin), an Angular 6 admin panel using angular material & angular flex.
 
@@ -64,13 +64,13 @@ Bandwidth Speed: 100 Mbps
  
 ## Dependencies
 
-The following table summarizes the tools and libraries required to run XCASH DPOPS - Delegate Website
+The following table summarizes the tools and libraries required to run delegates pool website
 
 | Dependencies                                 | Min. version  | Ubuntu package            |
 | -------------------------------------------- | ------------- | ------------------------- |
 | Node.js                                      | 8             |  install from binaries    | 
 | Angular                                      | 6             |  install from NPM         |
-| XCASH_DPOPS                                  | latest version | [build from source](https://github.com/X-CASH-official/XCASH_DPOPS)
+| XCASH_DPOPS                                  | latest version | [build from source](https://github.com/X-CASH-official/xcash-dpops)
 
 **If you want to run the website using SSL then you will need to install a webserver like nginx  
 The readme shows you how to setup the website using HTTP, since there is no sensitive data in the website**
@@ -127,7 +127,7 @@ Then you need to install Uglifyjs globally
 ### Cloning the Repository
 ```
 cd ~/x-network 
-git clone https://github.com/X-CASH-official/XCASH_DPOPS_shared_delegates_website.git
+git clone https://github.com/X-CASH-official/delegates-pool-website.git
 ```
  
 
@@ -142,7 +142,7 @@ Now you need to install all of the dependicies for the website. Navigate to the 
 
 
 ### Redirect port 80 to 18283
-Make sure to follow the steps to [setup the firewall for XCASH_DPOPS](https://github.com/X-CASH-official/XCASH_DPOPS#how-to-setup-the-firewall)
+Make sure to follow the steps to [setup the firewall for XCASH_DPOPS](https://github.com/X-CASH-official/xcash-dpops#how-to-setup-the-firewall)
 
 
 
@@ -151,18 +151,21 @@ Make sure to follow the steps to [setup the firewall for XCASH_DPOPS](https://gi
 To build XCASH_DPOPS - Shared Delegates Website, naviagte to the folder with the package.json file, and then run  
 `npm run build`
 
-It will then create a dist folder, compress the javascript using Uglify-JS and move all of the contents of this folder to your XCASH_DPOPS/shared_delegates_website folder 
+It will then create a dist folder, compress the javascript using Uglify-JS and move all of the contents of this folder to your xcash-dpops/delegates-pool-website folder 
 ``` 
 cd dist  
 for f in *.js; do echo "Processing $f file.."; uglifyjs $f --compress --mangle --output "{$f}min"; rm $f; mv "{$f}min" $f; done  
-rm -r ~/x-network/XCASH_DPOPS/shared_delegates_website/  
-mkdir ~/x-network/XCASH_DPOPS/shared_delegates_website/  
+rm -r ~/x-network/xcash-dpops-dpops/delegates-pool-website/  
+mkdir ~/x-network/XCASH_DPOPS/delegates-pool-website/  
 cd ../  
-cp -a dist/* ~/x-network/XCASH_DPOPS/shared_delegates_website/ 
+cp -a dist/* ~/x-network/xcash-dpops/delegates-pool-website/ 
 ```
 
 
 ## Testing
+
+First run the angular test to make sure the website is functioning correctly  
+`npm test`
 
 To test that you have properly configured XCASH_DPOPS - Shared Delegates Website, run the XCASH_DPOPS with the following flags  
 `--test_data_add`  
