@@ -75,9 +75,9 @@ export class voterstatisticsComponent implements OnInit {
 	  this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_INFORMATION + "?public_address=" + data).subscribe(
 	  async (res) =>
 	  {
-            var data = JSON.parse(JSON.stringify(res));            
-	    this.dashCard1[0].number = data.current_total / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
-            this.dashCard2[1].number = data.inactivity_count;
+            var data2 = JSON.parse(JSON.stringify(res));            
+	    this.dashCard1[0].number = data2.current_total / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+            this.dashCard2[1].number = data2.inactivity_count;
 
             await this.httpdataservice.sleep(200);
             this.get_public_address_payment_information(data);
