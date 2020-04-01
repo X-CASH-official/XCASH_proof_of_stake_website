@@ -41,11 +41,6 @@
 					<mat-header-cell *matHeaderCellDef> Block Reward </mat-header-cell>
 					<mat-cell id="block_reward{{row.id}}" *matCellDef="let row"> {{row.block_reward | number}} </mat-cell>
 				</ng-container>	
-				
-				<ng-container matColumnDef="average">
-					<mat-header-cell *matHeaderCellDef> Average </mat-header-cell>
-					<mat-cell id="average{{row.id}}" *matCellDef="let row" [style.color]="row.average < 100 ? 'green' : row.average > 100 ? 'red' : 'black'"> {{row.average}}% </mat-cell>
-				</ng-container>
 
 				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 				<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
