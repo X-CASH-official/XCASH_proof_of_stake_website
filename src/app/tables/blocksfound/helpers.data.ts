@@ -16,21 +16,20 @@ export class ExampleDatabase {
   }
 
   /** Adds a new user to the database. */
-  addUser(id:string,block_height:string,block_hash:string,block_date_and_time:string,block_reward:string,average:string) {
+  addUser(id:string,block_height:string,block_hash:string,block_date_and_time:string,block_reward:string) {
     const copiedData = this.data.slice();
-    copiedData.push(this.createNewUser(id,block_height,block_hash,block_date_and_time,block_reward,average));
+    copiedData.push(this.createNewUser(id,block_height,block_hash,block_date_and_time,block_reward));
     this.dataChange.next(copiedData);
   }
 
   /** Builds and returns a new User. */
-  private createNewUser(id:string,block_height:string,block_hash:string,block_date_and_time:string,block_reward:string,average:string) {
+  private createNewUser(id:string,block_height:string,block_hash:string,block_date_and_time:string,block_reward:string) {
     return {
       id: id,
       block_height: block_height,
       block_hash: block_hash,
       block_date_and_time: block_date_and_time,
-      block_reward: block_reward,
-      average: average
+      block_reward: block_reward
     };
   }
 }

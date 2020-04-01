@@ -31,19 +31,29 @@ export class blocksfoundComponent implements OnInit {
             var data = JSON.parse(JSON.stringify(res));
 	    var count = 0;
             var block_reward;
+            this.total_blocks_found = data.length;
 	    for (count = 0; count < data.length; count++)
 	    {
               block_reward = parseInt(data[count].block_reward) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
-	      this.exampleDatabase.addUser((count + 1).toString(),data[count].block_height.toString(),data[count].block_hash.toString(),(parseInt(data[count].block_date_and_time) * 1000).toString(),block_reward.toString(),data[count].block_count.toString());
-              if (count != 0)
-              {
-                this.total_average += (parseInt(data[count].block_height) - parseInt(data[count-1].block_height));
-              }
+	      this.exampleDatabase.addUser((count + 1).toString(),data[count].block_height.toString(),data[count].block_hash.toString(),(parseInt(data[count].block_date_and_time) * 1000).toString(),block_reward.toString());
 	    }
-            this.total_average = (this.total_average / data.length) | 0;
+	    this.dashCard[0].number = data.length;
+  	    this.dataSource = new ExampleDataSource(this.exampleDatabase);
+
+            this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_STATISTICS).subscribe(
+	  (res) =>
+	  {            
+            var data = JSON.parse(JSON.stringify(res)); 
+            this.total_average = ((this.total_blocks_found / (parseInt(data.block_verifier_total_rounds) / 100)) * 100) | 0;
 	    this.dashCard[0].number = data.length;
             this.dashCard[1].number = this.total_average;
   	    this.dataSource = new ExampleDataSource(this.exampleDatabase);
+	  },
+	  (error) => 
+          {
+	    Swal.fire("Error","An error has occured","error");
+	  }
+	  );
 	  },
 	  (error) => 
           {

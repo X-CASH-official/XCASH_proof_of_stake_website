@@ -76,7 +76,7 @@ export class voterstatisticsComponent implements OnInit {
 	  async (res) =>
 	  {
             var data = JSON.parse(JSON.stringify(res));            
-	    this.dashCard1[0].number = data.current_total;
+	    this.dashCard1[0].number = data.current_total / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
             this.dashCard2[1].number = data.inactivity_count;
 
             await this.httpdataservice.sleep(200);

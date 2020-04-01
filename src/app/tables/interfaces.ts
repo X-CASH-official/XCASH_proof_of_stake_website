@@ -4,7 +4,6 @@ export interface blocksfounddata {
   block_hash: string;
   block_date_and_time: string;
   block_reward: string;
-  average: string;
 }
 
 export interface voterslistdata {
