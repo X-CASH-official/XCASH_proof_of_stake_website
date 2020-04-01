@@ -12,8 +12,8 @@ describe('blocksfoundComponent', () => {
   let component: blocksfoundComponent;
   let fixture: ComponentFixture<blocksfoundComponent>;
   let test_data: any[] = [
-    { id: "1", block_height: '100', block_hash: "data", block_date_and_time: "0", block_reward: "0", average: "100" },
-    { id: "2", block_height: '100', block_hash: "data", block_date_and_time: "0", block_reward: "0", average: "100" }
+    { id: "1", block_height: '100', block_hash: "data", block_date_and_time: "0", block_reward: "0" },
+    { id: "2", block_height: '100', block_hash: "data", block_date_and_time: "0", block_reward: "0" }
   ];
 
   beforeEach(async(() => {
@@ -48,7 +48,7 @@ describe('blocksfoundComponent', () => {
     // test the code
     it('should update blocks_found table', () => {
       component.exampleDatabase = new ExampleDatabase();
-      test_data.forEach((item) => component.exampleDatabase.addUser(item.id,item.block_height,item.block_hash,item.block_date_and_time,item.block_reward,item.average));
+      test_data.forEach((item) => component.exampleDatabase.addUser(item.id,item.block_height,item.block_hash,item.block_date_and_time,item.block_reward));
       component.dataSource = new ExampleDataSource(component.exampleDatabase);
   
       fixture.detectChanges();
@@ -56,12 +56,10 @@ describe('blocksfoundComponent', () => {
       expect(fixture.debugElement.nativeElement.querySelector('#block_height1').textContent).toContain(test_data[0].block_height);
       expect(fixture.debugElement.nativeElement.querySelector('#block_hash1').textContent).toContain(test_data[0].block_hash);
       expect(fixture.debugElement.nativeElement.querySelector('#block_reward1').textContent).toContain(test_data[0].block_reward);
-      expect(fixture.debugElement.nativeElement.querySelector('#average1').textContent).toContain(test_data[0].average);
       
       expect(fixture.debugElement.nativeElement.querySelector('#id2').textContent).toContain(test_data[1].id);
       expect(fixture.debugElement.nativeElement.querySelector('#block_height2').textContent).toContain(test_data[1].block_height);
       expect(fixture.debugElement.nativeElement.querySelector('#block_hash2').textContent).toContain(test_data[1].block_hash);
       expect(fixture.debugElement.nativeElement.querySelector('#block_reward2').textContent).toContain(test_data[1].block_reward);
-      expect(fixture.debugElement.nativeElement.querySelector('#average2').textContent).toContain(test_data[1].average);
       });
 });

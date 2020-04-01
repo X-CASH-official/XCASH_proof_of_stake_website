@@ -16,7 +16,7 @@ export class blocksfoundComponent implements OnInit {
     ];
 	total_blocks_found:any = 0;
 	total_average:number = 0;
-	public displayedColumns = ['ID', 'block_height', 'block_hash', 'block_date_and_time', 'block_reward', 'average'];
+	public displayedColumns = ['ID', 'block_height', 'block_hash', 'block_date_and_time', 'block_reward'];
 	public exampleDatabase = new ExampleDatabase();
 	public dataSource: ExampleDataSource | null;
   	public showFilterTableCode;
@@ -44,7 +44,7 @@ export class blocksfoundComponent implements OnInit {
 	  (res) =>
 	  {            
             var data = JSON.parse(JSON.stringify(res)); 
-            this.total_average = ((this.total_blocks_found / (parseInt(data.block_verifier_total_rounds) / 100)) * 100) | 0;
+            this.total_average = ((parseInt(data.block_verifier_total_rounds)/(100*this.total_blocks_found))*100) | 0;
 	    this.dashCard[0].number = data.length;
             this.dashCard[1].number = this.total_average;
   	    this.dataSource = new ExampleDataSource(this.exampleDatabase);
