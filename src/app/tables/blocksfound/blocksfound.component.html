@@ -24,12 +24,12 @@
 				
 				<ng-container matColumnDef="block_height">
 					<mat-header-cell *matHeaderCellDef> Block Height </mat-header-cell>
-                   <mat-cell id="block_height{{row.id}}" *matCellDef="let row"><a class="text-primary" href="website/auth/tables/round_statistics?data={{row.block_height}}" target="_blank"><h3>{{row.block_height | number}}</h3></a></mat-cell>
+                   <mat-cell id="block_height{{row.id}}" *matCellDef="let row"><a class="text-primary" href="http://delegates.xcash.foundation/auth/tables/round_statistics?data={{row.block_height}}" target="_blank"><h3>{{row.block_height | number}}</h3></a></mat-cell>
 				</ng-container>
 				
 				<ng-container matColumnDef="block_hash">
 					<mat-header-cell *matHeaderCellDef> Block Hash </mat-header-cell>
-					<mat-cell id="block_hash{{row.id}}" *matCellDef="let row"><a class="text-primary" href="website/auth/tables/round_statistics?data={{row.block_hash}}" target="_blank"><h3>{{row.block_hash}}</h3></a></mat-cell>
+					<mat-cell id="block_hash{{row.id}}" *matCellDef="let row"><a class="text-primary" href="http://delegates.xcash.foundation/auth/tables/round_statistics?data={{row.block_hash}}" target="_blank"><h3>{{row.block_hash}}</h3></a></mat-cell>
 				</ng-container>	
 
 				<ng-container matColumnDef="block_date_and_time">
