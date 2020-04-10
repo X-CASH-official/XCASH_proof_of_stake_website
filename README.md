@@ -1,179 +1,185 @@
-# Delegates Pool Website
+<div align=middle>
 
-Forked from [cdk-admin](https://github.com/codetok/cdk-admin), an Angular 6 admin panel using angular material & angular flex.
+<a align="center" href="https://x-network.io/xcash"><img src="header.png" alt="X-Cash Core"></a>
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](https://opensource.org/licenses/MIT)
+[![Discord](https://img.shields.io/discord/470575102203920395?logo=discord)](https://discordapp.com/invite/4CAahnd)
 
+</div>
 
+# X-Cash Delegates Pool Website
 
-## Introduction
+**🗳 The website to manage an elected delegate.**  
 
-This website will give users
-* A dashboard that will show how to vote for the delegate, the delegate fee, and how many blocks the delegate has found
-* A place to view a detailed list of the blocks found by the delegate
-* A place to view how many votes the delegate has and what public addresses, with their reserve proofs have voted for the delegate
-* A place to view how many payments and how much X-CASH the delegate has paid
-* A place to view how much X-CASH a user has earned from staking with the delegate
+*Admin-panel-styled dashboard forked from [cdk-admin](https://github.com/codetok/cdk-admin), an Angular 6 admin panel using angular material.*
 
-This website is for delegates that are planning to get elected by others voting for them. It provides an automatic way to pay users that have voted for you, and provides them an automatic way for them to view their payment history.
-This website is not needed for a solo delegate.
+## Table of Contents
 
-**If you plan on running a shared delegates website, you will need to run the website on the same system as the DPOPS node**
+- [Table of Contents](#table-of-contents)
+- [Features](#features)
+- [License](#license)
+- [Contributing](#contributing)
+- [Documentation](#documentation)
+- [Security](#security)
+- [System Requirements](#system-requirements)
+- [Installation Process](#installation-process)
+  - [Dependencies](#dependencies)
+  - [Requirements](#requirements)
+  - [Develop](#develop)
+  - [Testing](#testing)
 
+## Features
 
-## Table of Contents  
-[System Requirements](#system-requirements)  
-[Dependencies](#dependencies)  
-[Installation Process](#installation-process)  
-* [Installation Path](#installation-path)  
-* [Installing Node.js From Binaries](#installing-nodejs-from-binaries) 
-* [Configuring NPM If Root](#configuring-npm-if-root)  
-* [Updating NPM](#updating-npm)  
-* [Installing Packages Globally Using NPM](#installing-packages-globally-using-npm)  
-* [Cloning the Repository](#cloning-the-repository)  
-* [Updating node_modules](#updating-node_modules)  
-* [Redirect port 80 to 18283](#redirect-port-80-to-18283)  
-* [Build XCASH_DPOPS - Shared Delegates Website](#build-xcash_dpops---shared-delegates-website)  
-* [Build Instructions](#cloning-the-repository)  
+**Voters payout**  
+Automatically pay voters, and provide them with their payment history.
 
-[Testing](#testing) 
+**List of voters**  
+See the number of votes and addresses associated to them.
 
+**Block history**
+See how many blocks the delegate you voted for has found.
 
+## License
+
+**The X-Cash Delegate Explorer is an open-source project managed by the X-Cash Foundation**.  
+We are operating under the [MIT License](LICENSE).
+
+## Contributing
+
+**Thank you for thinking of contributing! 😃**   
+If you want to help out, check [CONTRIBUTING](https://github.com/X-CASH-official/.github/blob/master/CONTRIBUTING.md) for a set of guidelines and check our [opened issues](https://github.com/X-CASH-official/delegates-pool-website/issues).
+
+## Documentation
+
+We are hosting our documentation on **GitBook** 👉 [**docs.xcash.foundation**](https://docs.xcash.foundation/)
+
+> You can contribute directly on our [`gitbook-docs`](https://github.com/X-CASH-official/gitbook-docs) repository.
+
+## Security 
+
+If you discover a **security** vulnerability, please send an e-mail to [security@xcash.foundation](mailto:security@xcash.foundation).  
+All security vulnerabilities concerning the X-Cash blockchain will be promply addressed.
 
 ## System Requirements
- 
-XCASH DPOPS will only run on a Linux/Unix OS at this time. We recommend installing this on a Ubuntu VPS/dedicated server (18.04) for the best compatibility.
- 
-**Minimum System Requirements:**  
-Operating System: Ubuntu 18.04 (or higher)  
-CPU: 4 threads  
-RAM: 8GB  
-Hard drive: 50GB  
-Bandwidth Transfer: 500GB per month  
-Bandwidth Speed: 30 Mbps
- 
-**Recommended System Requirements:**  
-Operating System: Ubuntu 18.04 (or higher)  
-CPU: 8 threads  
-RAM: 16GB  
-Hard drive: 100GB  
-Bandwidth Transfer: 2TB per month  
-Bandwidth Speed: 100 Mbps
 
+*The explorer is optional for delegates to run, as the network nodes will run it already.*
+
+To run the delegates explorer, it needs to be on the same server as an X-Cash node. The system requirements for running a node are in the [`xcash-dpops`](https://github.com/X-CASH-official/xcash-dpops/tree/master#system-requirements) repository.
+
+> At the moment, [`xcash-dpops`](https://github.com/X-CASH-official/xcash-dpops/) is only available for Linux/Unix distributions.
 
  
- 
-## Dependencies
+## Installation Process
 
-The following table summarizes the tools and libraries required to run delegates pool website
+### Dependencies
 
-| Dependencies                                 | Min. version  | Ubuntu package            |
-| -------------------------------------------- | ------------- | ------------------------- |
-| Node.js                                      | 8             |  install from binaries    | 
-| Angular                                      | 6             |  install from NPM         |
-| XCASH_DPOPS                                  | latest version | [build from source](https://github.com/X-CASH-official/xcash-dpops)
+> The following table summarizes the tools and libraries required to run the delegates explorer.
+
+| Dependencies | Min. version   | Ubuntu package                                                      |
+| ------------ | -------------- | ------------------------------------------------------------------- |
+| `Node.js`      | 8              | install from binaries                                               |
+| `Angular`      | 6              | install from `npm`                                                    |
+| `xcash-dpops`  | latest version | [build from source](https://github.com/X-CASH-official/xcash-dpops) |
+
 
 **If you want to run the website using SSL then you will need to install a webserver like nginx  
 The readme shows you how to setup the website using HTTP, since there is no sensitive data in the website**
 
+### Requirements
 
+#### Intalling Node.js from binaries
 
+> It is recommended to install the nodejs folder in the home directory `/home/$USER/` or root directory (`/root/`) in a new folder
 
-## Installation Process
+To download, go to the Node.js official [release page](https://nodejs.org/en/download/current/) and download the **Linux Binaries**. Copy it to your deisgnated folder and run these commands:
 
-
-### Installation Path
-It is recommend to install the nodejs folder in the home directory (`/home/$USER/`) or root directory (`/root/`) in a `x-network` folder
-
-
-
-
-### Installing Node.js from binaries
-
-Visit [https://nodejs.org/en/download/current/](https://nodejs.org/en/download/current/) and download the "Linux Binaries" download and copy it to a folder. Then run these commands  
-``` 
+```bash
 tar -xf node*.tar.xz
 rm node*.tar.xz
 ```
 
-Then add Node.js to your path (replace "Node.js_folder" with the location of the bin folder in the folder you installed Node.js in  
-`echo -e '\nexport PATH=Node.js_folder:$PATH' >> ~/.profile && source ~/.profile`
+Then add Node.js to your path:
 
-
-
-### Configuring NPM If Root
-Note if your installing this on a root account then you need to run these additional commands  
-`npm config set user 0`  
-`npm config set unsafe-perm true`
-
-
-
-### Updating NPM
-
-Now you need to update NPM  
-`npm install -g npm`
-
-
-
-### Installing Packages Globally Using NPM
-
-Now you need to install Angular globally  
-`npm install -g @angular/cli@latest`
-
-Then you need to install Uglifyjs globally  
-`npm install -g uglify-js`
-
-
-
-### Cloning the Repository
+```bash
+echo -e '\nexport PATH=path_to_nodejs/bin:$PATH' >> ~/.profile && source ~/.profile
 ```
-cd ~/x-network 
-git clone https://github.com/X-CASH-official/delegates-pool-website.git
+> Replace `path_to_nodejs/bin` with the location of the `bin` folder where you installed Node.js
+
+#### npm
+
+> Note if your installing on a `root` session, you need to run these additional commands before upgrading
+> ```bash
+> npm config set user 0 
+> npm config set unsafe-perm true
+> ```
+
+Update `npm` globally:
+```bash
+npm install -g npm
 ```
- 
 
+#### angular 
 
+Install the latest version of Angular globally: 
+```shell 
+npm install -g @angular/cli@latest
+```
 
-### Updating node_modules
+Then install the compressor `UglifyJS` globally : 
+```shell
+npm install -g uglify-js
+```
 
-Now you need to install all of the dependicies for the website. Navigate to the folder with the package.json file, and then run  
-`npm update`
+### Develop
 
+#### Clone repository
 
-
-
-### Redirect port 80 to 18283
-Make sure to follow the steps to [setup the firewall for XCASH_DPOPS](https://github.com/X-CASH-official/xcash-dpops#how-to-setup-the-firewall)
-
-
-
-### Build XCASH_DPOPS - Shared Delegates Website
-
-To build XCASH_DPOPS - Shared Delegates Website, naviagte to the folder with the package.json file, and then run  
-`npm run build`
-
-It will then create a dist folder, compress the javascript using Uglify-JS and move all of the contents of this folder to your xcash-dpops/delegates-pool-website folder 
+In your desired folder, clone the repository:
+```shell
+git clone https://github.com/X-CASH-official/delegates-explorer.git
 ``` 
-cd dist  
-for f in *.js; do echo "Processing $f file.."; uglifyjs $f --compress --mangle --output "{$f}min"; rm $f; mv "{$f}min" $f; done  
-rm -r ~/x-network/xcash-dpops-dpops/delegates-pool-website/  
-mkdir ~/x-network/XCASH_DPOPS/delegates-pool-website/  
-cd ../  
-cp -a dist/* ~/x-network/xcash-dpops/delegates-pool-website/ 
+
+#### Install dependencies
+
+```shell
+~cd /delegates-explorer
+npm install
 ```
 
+#### Redirect port 80 to 18283
 
-## Testing
+Make sure to follow the steps to [setup the firewall for `xcash-dpops`](https://github.com/X-CASH-official/xcash-dpops#how-to-setup-the-firewall)
 
-First run the angular test to make sure the website is functioning correctly  
-`npm test`
+#### Build
 
-To test that you have properly configured XCASH_DPOPS - Shared Delegates Website, run the XCASH_DPOPS with the following flags  
-`--test_data_add`  
-This will add test data to the Mongo Database
+To build the delegate explorer, go to the `delegates-explorer` folder and run:
+```shell
+npm run build
+```
+
+It will build in the `dist`folder.
+
+Compress the `.js` files with `Uglify-JS` and move all of the contents of this folder to your `xcash-dpops/` folder
+
+```shell
+cd dist
+for f in *.js; do echo "Processing $f file.."; uglifyjs $f --compress --mangle --output "{$f}min"; rm $f; mv "{$f}min" $f; done
+rm -r ~/xcash-dpops/delegates-explorer
+mkdir ~/xcash-dpops/delegates-explorer
+cd ../
+cp -a dist/* ~/xcash-dpops/delegates-explorer/
+```
+
+### Testing
+
+```shell
+npm test
+``` 
+
+To test that you have properly configured the delegates explorer, run `xcash-dpops` with the `--test_data_add` flag. *This will add test datas to the MongoDB.*
 
 Now run the website server again using the normal options.
 
 Next, navigate to your servers IP address or website domain. You should now see the website and some test data. You can navigate through the website using the test data.
 
-When you have verified that the website works correctly, remove the test data, by shutting down the XCASH_DPOPS and then run it with the following flag  
-`--test_data_remove`
+When you have verified that the website works correctly, remove the test data by shutting down the `xcash-dpops` and then running it again with the `--test_data_remove` flag.  
