@@ -4,10 +4,13 @@
     </div>
     <div  fxFlex="60" fxLayout="column" fxLayoutAlign="center center" [style.background]="dashData?.colorDark" >
          
-        <div style="color: white;font-size: 40px">
+        <div *ngIf="dashData?.settings === true" style="color: white;font-size: 40px">
             <ng2-odometer [number]="dashData?.number" [config]="{ }"></ng2-odometer>
-            
         </div>
+        <div *ngIf="dashData?.settings === false" style="color: white;font-size: 20px">
+            <p>{{dashData?.number}}</p>
+        </div>
+
         <p class="mat-body-1 border-top">
             {{dashData?.title}}
         </p>

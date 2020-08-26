@@ -13,19 +13,19 @@ export class DashboardCrmComponent implements OnInit {
     delegatestatistics:string;
     delegateprofileinformation:string;
     public dashCard1 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'CURRENT DELEGATE RANK', icon: 'info' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL_VOTES', icon: 'info' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'ONLINE PERCENTAGE', icon: 'info' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'CURRENT DELEGATE RANK', icon: 'info' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL_VOTES', icon: 'info' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'ONLINE PERCENTAGE', icon: 'info' }
     ];
     public dashCard2 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL BLOCKS FOUND', icon: 'assignments' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL XCASH FROM BLOCKS FOUND', icon: 'cloud' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL PAYMENTS', icon: 'info' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL BLOCKS FOUND', icon: 'assignments' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL XCASH FROM BLOCKS FOUND', icon: 'cloud' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL PAYMENTS', icon: 'info' }
     ];
     public dashCard3 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL VOTERS', icon: 'done' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'FEE', icon: 'info' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'MINIMUM AMOUNT', icon: 'info' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL VOTERS', icon: 'done' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: false, title: 'FEE', icon: 'info' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'MINIMUM AMOUNT', icon: 'info' }
     ];
 
     constructor(private httpdataservice: httpdataservice) { }

@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class voterslistComponent implements OnInit {
 	public dashCard = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL VOTES', icon: 'cloud' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL VOTERS', icon: 'done' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL VOTES', icon: 'cloud' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL VOTERS', icon: 'done' }
     ];
 	total_vote_count:any = 0;
 	amount_of_votes:any = 0;

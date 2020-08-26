@@ -12,13 +12,13 @@ import { Observable } from 'rxjs';
 })
 export class voterstatisticsComponent implements OnInit {
 	public dashCard1 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'CURRENT_AMOUNT', icon: 'assignments' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL AMOUNT PAID', icon: 'done' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'CURRENT_AMOUNT', icon: 'assignments' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL AMOUNT PAID', icon: 'done' }
     ];
 
         public dashCard2 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'TOTAL NUMBER OF PAYMENTS', icon: 'cloud' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, title: 'INACTIVITY_TOTAL', icon: 'info' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL NUMBER OF PAYMENTS', icon: 'cloud' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'INACTIVITY_TOTAL', icon: 'info' }
     ];
         XCASH_WALLET_LENGTH:number = 98
         XCASH_WALLET_PREFIX:string = "XCA"

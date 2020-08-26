@@ -8,6 +8,7 @@ import { Observable ,  Observer } from 'rxjs';
 export class DashcardComponent implements OnInit {
      
     @Input() dashData: any;
+    @Input() settings: string;
     
     constructor() {
 
