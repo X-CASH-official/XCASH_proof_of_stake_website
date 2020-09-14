@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 
 export class DashboardCrmComponent implements OnInit {
     public_address:string;
+    delegate_name:string;
     delegatestatistics:string;
     delegateprofileinformation:string;
     public dashCard1 = [
@@ -37,6 +38,7 @@ export class DashboardCrmComponent implements OnInit {
 	  {
             var data = JSON.parse(JSON.stringify(res)); 
             this.public_address = data.public_address; 
+            this.delegate_name = `vote ${data.delegate_name}`; 
             this.delegatestatistics = "website/auth/tables/delegates_statistics?data=" + this.public_address;   
             this.delegateprofileinformation = "website/auth/delegates_information?data=" + this.public_address; 
             this.dashCard1[0].number = data.current_delegate_rank;
