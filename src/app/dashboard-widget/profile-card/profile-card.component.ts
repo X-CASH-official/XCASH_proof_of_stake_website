@@ -36,7 +36,7 @@ export class ProfileCardComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
-    Swal.fire("Success","The public address has been copied to the clipboard","success");
+    Swal.fire("Success","The vote has been copied to the clipboard","success");
   }
 
   redirect(url:string)
