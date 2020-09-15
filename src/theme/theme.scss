@@ -7,12 +7,12 @@
 
 
 $mat-light-theme-background: (
-  status-bar: white, //map_get($mat-grey, 300),
-  app-bar:    white, //map_get($mat-grey, 100),
+  status-bar: whitesmoke, //map_get($mat-grey, 300),
+  app-bar:    whitesmoke, //map_get($mat-grey, 100),
   background: map_get($mat-indigo, 50),
   hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
-  card:       white,
-  dialog:     white,
+  card:       whitesmoke,
+  dialog:     whitesmoke,
   disabled-button: $black-12-opacity,
   raised-button: white,
   focused-button: $black-6-opacity,
