@@ -7,8 +7,8 @@
 
 
 $mat-light-theme-background: (
-  status-bar: map_get($mat-grey, 300),
-  app-bar:    map_get($mat-grey, 100),
+  status-bar: #edeff1, //map_get($mat-grey, 300),
+  app-bar:    #edeff1, //map_get($mat-grey, 100),
   background: map_get($mat-indigo, 50),
   hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
   card:       white,
@@ -46,7 +46,7 @@ cdk-sidemenu{
 
 
 cdk-sidemenu-item{
-    @include sidemenu-item($cdk-theme,20px)
+    @include sidemenu-item($cdk-theme,28px)
 }
 
 
