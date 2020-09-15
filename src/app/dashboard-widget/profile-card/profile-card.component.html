@@ -3,10 +3,10 @@
         <div   class="profile-details mat-elevation-z8" [ngStyle]="data_settings" >
             <div fxLayout="column" class="profile-details-holder" [ngStyle]="text_settings" fxLayoutAlign="space-around center">
                 <h1 class="mat-headline center-align" >{{title}}</h1>
-                <h1 class="mat-subheading-1 center-align" >{{data}}</h1>
+                <code class="codeblock center-align" >{{data}}</code>
                 <button class="Follow " mat-raised-button [ngStyle]="button_length" color="warn" (click)="button_click === 'copy' ? copyMessage(data) : (button_click === 'shareddelegateswebsitegetstatistics' || button_click === 'getblocksfound' || button_click === 'getpublicaddressinformation' || button_click === 'getpublicaddresspaymentinformation' || button_click === 'getdelegatesvoterslist') ? voting_data(button_click) : redirect(button_click)">{{button_name}}</button>
             </div>
         </div>
-        
+
     </div>
 </div>
