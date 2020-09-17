@@ -11,8 +11,8 @@ $mat-light-theme-background: (
   app-bar:    whitesmoke, //map_get($mat-grey, 100),
   background: map_get($mat-indigo, 50),
   hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
-  card:       whitesmoke,
-  dialog:     whitesmoke,
+  card:       white,
+  dialog:     white,
   disabled-button: $black-12-opacity,
   raised-button: white,
   focused-button: $black-6-opacity,
