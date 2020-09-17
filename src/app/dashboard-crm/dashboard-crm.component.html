@@ -1,22 +1,22 @@
 <h2 class="page_title">{{delegate_name}}</h2>
 
 <div fxLayout="row" fxLayout="row wrap">
-    <div *ngFor="let dash of dashCard1; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+    <div *ngFor="let dash of dashCard1; let count = index" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="33">
         <cdk-dashcard id="dashcard{{count+1}}" [dashData]="dash"></cdk-dashcard>
     </div>
 </div>
 <div fxLayout="row" fxLayout="row wrap">
-    <div *ngFor="let dash of dashCard2; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+    <div *ngFor="let dash of dashCard2; let count = index" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="33">
         <cdk-dashcard id="dashcard{{count+4}}" [dashData]="dash"></cdk-dashcard>
     </div>
 </div>
 <div fxLayout="row" fxLayout="row wrap">
-    <div *ngFor="let dash of dashCard3; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+    <div *ngFor="let dash of dashCard3; let count = index" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="33">
         <cdk-dashcard id="dashcard{{count+7}}" [dashData]="dash"></cdk-dashcard>
     </div>
 </div>
 
 <div fxLayout="row" fxLayout="row wrap" fxLayoutAlign="center">
-     <cdk-profile-card id="profilecard1" [title]="'Vote with delegate name'" [settings]="{'min-height': '0%'}" [data_settings]="{'margin-top': '0%'}" [text_settings]="{'margin-top': '0%'}" [data]="'vote ' + delegate_name" [button_name]="'Copy vote'" [button_length]="{'width': '25%'}" [button_click]="'copy'" fxFlex="100" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="30"></cdk-profile-card>
-     <cdk-profile-card id="profilecard1" [title]="'Vote with public address'" [settings]="{'min-height': '0%'}" [data_settings]="{'margin-top': '0%'}" [text_settings]="{'margin-top': '0%'}" [data]="'vote ' + public_address" [button_name]="'Copy vote'" [button_length]="{'width': '25%'}" [button_click]="'copy'" fxFlex="100" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="30"></cdk-profile-card>
+     <cdk-profile-card id="profilecard1" [title]="'Vote with delegate name'" [settings]="{'min-height': '0%'}" [data_settings]="{'margin-top': '0%'}" [text_settings]="{'margin-top': '0%'}" [data]="'vote ' + delegate_name" [button_name]="'Copy vote'" [button_length]="{'width': '25%'}" [button_click]="'copy'" fxFlex="100" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="100"></cdk-profile-card>
+     <cdk-profile-card id="profilecard1" [title]="'Vote with public address'" [settings]="{'min-height': '0%'}" [data_settings]="{'margin-top': '0%'}" [text_settings]="{'margin-top': '0%'}" [data]="'vote ' + public_address" [button_name]="'Copy vote'" [button_length]="{'width': '25%'}" [button_click]="'copy'" fxFlex="100" fxFlex.lt-sm="100" fxFlex.sm="100" fxFlex.md="100"></cdk-profile-card>
 </div>
