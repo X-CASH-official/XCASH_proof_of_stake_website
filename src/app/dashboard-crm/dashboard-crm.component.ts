@@ -26,7 +26,7 @@ export class DashboardCrmComponent implements OnInit {
     public dashCard3 = [
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL VOTERS', icon: 'done' },
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: false, title: 'FEE', icon: 'info' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'MINIMUM AMOUNT', icon: 'info' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'MINIMUM PAYOUT AMOUNT', icon: 'info' }
     ];
 
     constructor(private httpdataservice: httpdataservice) { }
