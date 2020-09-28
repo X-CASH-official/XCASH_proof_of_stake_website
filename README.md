@@ -41,7 +41,7 @@ See how many blocks the delegate you voted for has found.
 
 ## License
 
-**The X-Cash Delegate is an open-source project managed by the X-Cash Foundation**.  
+**The X-Cash Delegates Pool Website is an open-source project managed by the X-Cash Foundation**.  
 We are operating under the [MIT License](LICENSE).
 
 ## Contributing
