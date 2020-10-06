@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class blocksfoundComponent implements OnInit {
 	public dashCard = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'BLOCKS FOUND', icon: 'assignments' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'AVERAGE', icon: 'done' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'BLOCKS FOUND', icon: 'find_in_page' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'EST ROUNDS TILL NEXT FINDING', icon: 'published_with_changes' }
     ];
 	total_blocks_found:any = 0;
 	total_average:number = 0;
@@ -26,7 +26,7 @@ export class blocksfoundComponent implements OnInit {
           // get the data
           this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_BLOCKS_FOUND).subscribe(
 	  (res) =>
-	  {            
+	  {
             this.exampleDatabase = new ExampleDatabase();
             var data = JSON.parse(JSON.stringify(res));
 	    var count = 0;
@@ -42,20 +42,20 @@ export class blocksfoundComponent implements OnInit {
 
             this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_STATISTICS).subscribe(
 	  (res) =>
-	  {            
-            var data = JSON.parse(JSON.stringify(res)); 
+	  {
+            var data = JSON.parse(JSON.stringify(res));
             this.total_average = ((parseInt(data.block_verifier_total_rounds)/(100*this.total_blocks_found))*100) | 0;
 	    this.dashCard[0].number = data.length;
             this.dashCard[1].number = this.total_average;
   	    this.dataSource = new ExampleDataSource(this.exampleDatabase);
 	  },
-	  (error) => 
+	  (error) =>
           {
 	    Swal.fire("Error","An error has occured","error");
 	  }
 	  );
 	  },
-	  (error) => 
+	  (error) =>
           {
 	    Swal.fire("Error","An error has occured","error");
 	  }

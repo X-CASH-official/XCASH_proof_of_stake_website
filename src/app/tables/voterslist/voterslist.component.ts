@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class voterslistComponent implements OnInit {
 	public dashCard = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL VOTES', icon: 'cloud' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'TOTAL VOTERS', icon: 'done' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'VOTE COUNT', icon: 'done_all' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'VOTERS', icon: 'how_to_reg' }
     ];
 	total_vote_count:any = 0;
 	amount_of_votes:any = 0;
@@ -27,20 +27,20 @@ export class voterslistComponent implements OnInit {
 
   	ngOnInit() {
 
-          // get the data          
+          // get the data
 	  this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_STATISTICS).subscribe(
 	  (res) =>
 	  {
-            var data = JSON.parse(JSON.stringify(res)); 
-            this.public_address = data.public_address; 
+            var data = JSON.parse(JSON.stringify(res));
+            this.public_address = data.public_address;
 
-            // get the data	 
+            // get the data
 	    this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_DELEGATES_VOTERS_LIST + "?parameter1=" + this.public_address).subscribe(
 	    (res) =>
 	    {
               this.exampleDatabase = new ExampleDatabase();
               var data = JSON.parse(JSON.stringify(res));
-	      this.total_vote_count = 0;	
+	      this.total_vote_count = 0;
 	      this.amount_of_votes = data.length;
 	      var count = 0;
               var total = 0;
@@ -51,19 +51,19 @@ export class voterslistComponent implements OnInit {
 	        this.exampleDatabase.addUser((count + 1).toString(),data[count].public_address_created_reserve_proof.toString(),total.toString(),data[count].reserve_proof.toString());
 	      }
 	      this.dashCard[0].number = this.total_vote_count;
-	      this.dashCard[1].number = this.amount_of_votes;	
+	      this.dashCard[1].number = this.amount_of_votes;
   	      this.dataSource = new ExampleDataSource(this.exampleDatabase);
               },
-              (error) => 
+              (error) =>
               {
                 Swal.fire("Error","An error has occured","error");
               }
 	    );
           },
-            (error) => 
+            (error) =>
             {
               Swal.fire("Error","An error has occured","error");
             }
-	  );	  		  
+	  );
 	}
 }
