@@ -14,22 +14,20 @@ export class DashboardCrmComponent implements OnInit {
     delegatestatistics:string;
     delegateprofileinformation:string;
     public dashCard1 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'DELEGATE RANK', icon: 'info' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'DELEGATE RANK', icon: 'leaderboard' },
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'VOTERS', icon: 'done' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'BLOCKS FOUND', icon: 'assignments' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'ONLINE PERCENTAGE', icon: 'info' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'BLOCKS FOUND', icon: 'find_in_page' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'ONLINE PERCENTAGE', icon: 'update' }
     ];
     public dashCard2 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: false, title: 'FEE', icon: 'info' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'MINIMUM PAYMENT AMOUNT', icon: 'info' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'PAYMENTS', icon: 'info' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: false, title: 'FEE PERCENTAGE', icon: 'local_atm' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'MINIMUM PAYMENT AMOUNT', icon: 'attach_money' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'PAYMENTS', icon: 'payment' }
     ];
     public dashCard3 = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'VOTE COUNT', icon: 'info' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'XCASH FROM BLOCKS FOUND', icon: 'cloud' }
-
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'VOTE COUNT', icon: 'done_all' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'XCASH FROM BLOCKS FOUND', icon: 'pageview' }
     ];
-
     constructor(private httpdataservice: httpdataservice) { }
 
     ngOnInit() {
