@@ -40,7 +40,7 @@ describe('blocksfoundComponent', () => {
     it('should set dash card ones property to a number', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard1').dashData.number).toBe(0));
 
     it('should create dash card two', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard2')).toBeTruthy());
-    it('should set dash card twos title', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard2').dashData.title).toBe('EST ROUNDS TILL NEXT FINDING'));
+    it('should set dash card twos title', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard2').dashData.title).toBe('EST ROUNDS BTW HITS'));
     it('should set dash card twos property to a number', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard2').dashData.number).toBe(0));
 
     it('should create blocks_found table', () => expect(fixture.debugElement.nativeElement.querySelector('#blocks_found_table')).toBeTruthy());

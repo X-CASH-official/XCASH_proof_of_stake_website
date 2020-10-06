@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class blocksfoundComponent implements OnInit {
 	public dashCard = [
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'BLOCKS FOUND', icon: 'find_in_page' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'EST ROUNDS TILL NEXT FINDING', icon: 'published_with_changes' }
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'EST ROUNDS BTW HITS', icon: 'published_with_changes' }
     ];
 	total_blocks_found:any = 0;
 	total_average:number = 0;
