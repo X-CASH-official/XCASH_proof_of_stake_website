@@ -15,7 +15,7 @@ export class DashboardCrmComponent implements OnInit {
     delegateprofileinformation:string;
     public dashCard1 = [
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'DELEGATE RANK', icon: 'leaderboard' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'VOTERS', icon: 'done' },
+        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'VOTERS', icon: 'how_to_reg' },
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'BLOCKS FOUND', icon: 'find_in_page' },
         { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'ONLINE PERCENTAGE', icon: 'update' }
     ];
