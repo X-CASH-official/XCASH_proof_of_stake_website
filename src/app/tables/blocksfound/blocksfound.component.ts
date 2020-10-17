@@ -1,6 +1,6 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { ExampleDatabase, ExampleDataSource } from './helpers.data';
-import {httpdataservice} from '../../services/http-request.service';
+import {HttpdataService} from '../../services/http-request.service';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 
@@ -25,11 +25,11 @@ export class blocksfoundComponent implements OnInit {
 	public dataSource: ExampleDataSource | null;
 	public showFilterTableCode;
 
-	constructor(private httpdataservice: httpdataservice) { }
+	constructor(private HttpdataService: HttpdataService) { }
 
 	ngOnInit() {
     // get the data
-    this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_BLOCKS_FOUND).subscribe(
+    this.HttpdataService.get_request(this.HttpdataService.GET_BLOCKS_FOUND).subscribe(
   	  (res) =>
   	  {
         this.exampleDatabase = new ExampleDatabase();
@@ -40,14 +40,14 @@ export class blocksfoundComponent implements OnInit {
         this.total_blocks_found = data.length;
 
         for (count = 0; count < data.length; count++) {
-          block_reward = parseInt(data[count].block_reward) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+          block_reward = parseInt(data[count].block_reward) / this.HttpdataService.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
   	      this.exampleDatabase.addUser((count + 1).toString(),data[count].block_height.toString(),data[count].block_hash.toString(),(parseInt(data[count].block_date_and_time) * 1000).toString(),block_reward.toString());
   	    }
 
         this.dashCard[0].text = data.length;
   	    this.dataSource = new ExampleDataSource(this.exampleDatabase);
 
-        this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_STATISTICS).subscribe(
+        this.HttpdataService.get_request(this.HttpdataService.GET_STATISTICS).subscribe(
           (res) => {
             var data = JSON.parse(JSON.stringify(res));
             this.total_average = ((parseInt(data.block_verifier_total_rounds)/(100*this.total_blocks_found))*100) | 0;

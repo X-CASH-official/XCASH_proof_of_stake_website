@@ -4,7 +4,7 @@ import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import { MatTableModule } from '@angular/material';
 import {RouterTestingModule} from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import {httpdataservice} from 'app/services/http-request.service';
+import {HttpdataService} from 'app/services/http-request.service';
 
 import { voterstatisticsComponent } from './voterstatistics.component';
 
@@ -20,7 +20,7 @@ describe('voterstatisticsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ voterstatisticsComponent ],
       imports: [HttpClientTestingModule,RouterTestingModule,MatTableModule],
-      providers: [ httpdataservice ],
+      providers: [ HttpdataService ],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();

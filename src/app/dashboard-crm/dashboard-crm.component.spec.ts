@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import {httpdataservice} from 'app/services/http-request.service';
+import {HttpdataService} from 'app/services/http-request.service';
 
 import { DashboardCrmComponent } from './dashboard-crm.component';
 
@@ -13,7 +13,7 @@ describe('DashboardCrmComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ DashboardCrmComponent ],
 imports: [HttpClientTestingModule],
-      providers: [ httpdataservice ],
+      providers: [ HttpdataService ],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
