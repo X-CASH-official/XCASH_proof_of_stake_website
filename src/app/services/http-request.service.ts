@@ -2,16 +2,16 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable()
-export class httpdataservice{
+export class HttpdataService{
 constructor(private httpClient: HttpClient) {}
 
-SERVER_HOSTNAME_AND_PORT_GET_STATISTICS:string = "/shareddelegateswebsitegetstatistics";
-SERVER_HOSTNAME_AND_PORT_GET_BLOCKS_FOUND:string = "/getblocksfound";
-SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_INFORMATION:string = "/getpublicaddressinformation";
-SERVER_HOSTNAME_AND_PORT_GET_DELEGATES_VOTERS_LIST:string = "/getdelegatesvoterslist";
-SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION:string = "/getpublicaddresspaymentinformation";
+GET_STATISTICS:string = "/shareddelegateswebsitegetstatistics";
+GET_BLOCKS_FOUND:string = "/getblocksfound";
+GET_PUBLIC_ADDRESS_INFORMATION:string = "/getpublicaddressinformation";
+GET_DELEGATES_VOTERS_LIST:string = "/getdelegatesvoterslist";
+GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION:string = "/getpublicaddresspaymentinformation";
 XCASH_WALLET_DECIMAL_PLACES_AMOUNT:number = 1000000;
-
+BLOCK_TIME:number = 5;
 Timer:any;
 
 sleep(milliseconds)

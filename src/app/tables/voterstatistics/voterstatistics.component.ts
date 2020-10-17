@@ -1,7 +1,7 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ExampleDatabase, ExampleDataSource } from './helpers.data';
-import {httpdataservice} from '../../services/http-request.service';
+import {HttpdataService} from '../../services/http-request.service';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 
@@ -29,7 +29,7 @@ export class voterstatisticsComponent implements OnInit {
 	public exampleDatabase;
 	public dataSource: ExampleDataSource | null;
 	public showFilterTableCode;
-	constructor(private route: ActivatedRoute, private httpdataservice: httpdataservice) { }
+	constructor(private route: ActivatedRoute, private HttpdataService: HttpdataService) { }
 
 	ngOnInit() {
     this.get_public_address_information(this.route.snapshot.queryParamMap.get("data"));
@@ -37,7 +37,7 @@ export class voterstatisticsComponent implements OnInit {
 
 	get_public_address_payment_information(data:string)	{
     // get the data
-	  this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION + "?public_address=" + data).subscribe(
+	  this.HttpdataService.get_request(this.HttpdataService.GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION + "?public_address=" + data).subscribe(
   	  (res) => {
         var data = JSON.parse(JSON.stringify(res));
         this.total_number_of_payments = data.length;
@@ -51,7 +51,7 @@ export class voterstatisticsComponent implements OnInit {
         for (count = 0; count < this.total_number_of_payments; count++)
   	    {
   	      // calculate the total amount paid
-          total = parseInt(data[count].total) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+          total = parseInt(data[count].total) / this.HttpdataService.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
   	      this.total_amount_paid += total;
   	      this.exampleDatabase.addUser((count + 1).toString(),(parseInt(data[count].date_and_time) * 1000).toString(),data[count].tx_hash.toString(),data[count].tx_key.toString(),total.toString());
   	    }
@@ -69,14 +69,14 @@ export class voterstatisticsComponent implements OnInit {
 
   async get_public_address_information(data:string) {
           // get the data
-	  this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_INFORMATION + "?public_address=" + data).subscribe(
+	  this.HttpdataService.get_request(this.HttpdataService.GET_PUBLIC_ADDRESS_INFORMATION + "?public_address=" + data).subscribe(
 	  async (res) =>
 	  {
       var data2 = JSON.parse(JSON.stringify(res));
-	    this.dashCard1[0].text = data2.current_total / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+	    this.dashCard1[0].text = data2.current_total / this.HttpdataService.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
       this.dashCard2[1].text = data2.inactivity_count;
 
-      await this.httpdataservice.sleep(200);
+      await this.HttpdataService.sleep(200);
       this.get_public_address_payment_information(data);
 	  },
 	  (error) =>
