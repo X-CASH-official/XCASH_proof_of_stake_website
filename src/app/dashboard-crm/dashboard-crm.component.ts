@@ -26,7 +26,7 @@ export class DashboardCrmComponent implements OnInit {
         { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 30, text_size: 40, text: 0, suffix: '', title: 'PAYMENTS', icon: 'payment' }
     ];
     public dashCard3 = [
-        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: 'XCA', title: 'VOTE COUNT', icon: 'done_all' },
+        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: 'XCA', title: 'VOTE COUNT', icon: 'done_all' },
         { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: 'XCA', title: 'XCASH FROM BLOCKS FOUND', icon: 'pageview' }
     ];
 
