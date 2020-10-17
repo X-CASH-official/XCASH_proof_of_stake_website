@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class voterslistComponent implements OnInit {
 	public dashCard = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'VOTE COUNT', icon: 'done_all' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'VOTERS', icon: 'how_to_reg' }
+        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true, width_icon: 40, text_size: 40, text: 0, suffix: '', title: 'VOTE COUNT', icon: 'done_all' },
+        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true, width_icon: 40, text_size: 40, text: 0, suffix: '', title: 'VOTERS', icon: 'how_to_reg' }
     ];
 	total_vote_count:any = 0;
 	amount_of_votes:any = 0;
@@ -48,8 +48,8 @@ export class voterslistComponent implements OnInit {
               this.total_vote_count += total;
               this.exampleDatabase.addUser((count + 1).toString(),data[count].public_address_created_reserve_proof.toString(),total.toString(),data[count].reserve_proof.toString());
             }
-            this.dashCard[0].number = this.total_vote_count;
-            this.dashCard[1].number = this.amount_of_votes;
+            this.dashCard[0].text = this.total_vote_count;
+            this.dashCard[1].text = this.amount_of_votes;
             this.dataSource = new ExampleDataSource(this.exampleDatabase);
           },
           (error) => {

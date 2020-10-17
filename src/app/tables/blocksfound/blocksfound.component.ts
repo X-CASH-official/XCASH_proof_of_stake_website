@@ -13,8 +13,8 @@ import { Observable } from 'rxjs';
 export class blocksfoundComponent implements OnInit {
 
   public dashCard = [
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'BLOCKS FOUND', icon: 'find_in_page' },
-        { colorDark: '#fa741c', colorLight: '#fb934e', number: 0, settings: true, title: 'EST ROUNDS BTW HITS', icon: 'published_with_changes' }
+        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'BLOCKS FOUND', icon: 'find_in_page' },
+        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'EST ROUNDS BTW HITS', icon: 'published_with_changes' }
     ];
 
   total_blocks_found:any = 0;
@@ -44,15 +44,15 @@ export class blocksfoundComponent implements OnInit {
   	      this.exampleDatabase.addUser((count + 1).toString(),data[count].block_height.toString(),data[count].block_hash.toString(),(parseInt(data[count].block_date_and_time) * 1000).toString(),block_reward.toString());
   	    }
 
-        this.dashCard[0].number = data.length;
+        this.dashCard[0].text = data.length;
   	    this.dataSource = new ExampleDataSource(this.exampleDatabase);
 
         this.httpdataservice.get_request(this.httpdataservice.SERVER_HOSTNAME_AND_PORT_GET_STATISTICS).subscribe(
           (res) => {
             var data = JSON.parse(JSON.stringify(res));
             this.total_average = ((parseInt(data.block_verifier_total_rounds)/(100*this.total_blocks_found))*100) | 0;
-            this.dashCard[0].number = data.length;
-            this.dashCard[1].number = this.total_average;
+            this.dashCard[0].text = data.length;
+            this.dashCard[1].text = this.total_average;
             this.dataSource = new ExampleDataSource(this.exampleDatabase);
         	  },
         	  (error) =>
