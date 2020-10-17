@@ -40,6 +40,7 @@ export class DashboardCrmComponent implements OnInit {
           var data = JSON.parse(JSON.stringify(res));
           this.public_address = data.public_address;
           this.delegate_name = data.delegate_name;
+
           this.delegatestatistics = "website/auth/tables/delegates_statistics?data=" + this.public_address;
           this.delegateprofileinformation = "website/auth/delegates_information?data=" + this.public_address;
           // dashCard1 row
