@@ -7,12 +7,14 @@
         color:#f5f0f0f2;
 
         .profile-details{
-            background-image: -webkit-linear-gradient(45deg, mat-color($primary,400) 45%, mat-color($primary,300)  45%);
+            //background-image: -webkit-linear-gradient(45deg, mat-color($primary,400) 45%, mat-color($primary,300)  45%);
+            //#15abce
+            background-color: #1189a5;
             margin-top: -50px;
             min-height: 180px;
-            padding: 12px; 
+            padding: 12px;
             & .profile-details-holder{
-                margin-top: 40px;
+                margin-top: 20px;
             }
         }
         .center-align{
@@ -35,6 +37,9 @@
             padding: 10px;
         }
     }
+}
+.swal-height {
+  height: 90vh;
 }
 .nav-item {
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
