@@ -6,9 +6,8 @@ import { Observable ,  Observer } from 'rxjs';
     styleUrls: ['./dashcard.component.scss']
 })
 export class DashcardComponent implements OnInit {
-     
+
     @Input() dashData: any;
-    @Input() settings: string;
     
     constructor() {
 
