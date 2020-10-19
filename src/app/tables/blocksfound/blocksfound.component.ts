@@ -1,8 +1,12 @@
+import {fromEvent as observableFromEvent,  Observable } from 'rxjs';
+import {distinctUntilChanged, debounceTime} from 'rxjs/operators';
+
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import {HttpdataService} from '../../services/http-request.service';
 import Swal from 'sweetalert2';
-import { Observable } from 'rxjs';
+
+import { MatPaginator, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-fixed-table',
@@ -13,23 +17,28 @@ import { Observable } from 'rxjs';
 export class blocksfoundComponent implements OnInit {
 
   public dashCard = [
-        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'BLOCKS FOUND', icon: 'find_in_page' },
-        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'EST ROUNDS BTW HITS', icon: 'published_with_changes' }
-    ];
+      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'BLOCKS FOUND', icon: 'find_in_page' },
+      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'EST ROUNDS BTW HITS', icon: 'published_with_changes' }
+  ];
 
   total_blocks_found:any = 0;
 	total_average:number = 0;
-
-  public displayedColumns = ['ID', 'block_height', 'block_hash', 'block_date_and_time', 'block_reward'];
+  length:number;
+  
+  public displayedColumns = ['ID', 'block_height', 'block_date_and_time', 'block_reward', 'block_hash'];
 	public exampleDatabase = new ExampleDatabase();
 	public dataSource: ExampleDataSource | null;
 	public showFilterTableCode;
 
 	constructor(private HttpdataService: HttpdataService) { }
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+	@ViewChild(MatSort) sort: MatSort;
+	@ViewChild('filter') filter: ElementRef;
+
 	ngOnInit() {
     // get the data
-    this.HttpdataService.get_request(this.HttpdataService.GET_BLOCKS_FOUND).subscribe(
+    this.HttpdataService.get_request(this.HttpdataService.POOL_GET_BLOCKS_FOUND).subscribe(
   	  (res) =>
   	  {
         this.exampleDatabase = new ExampleDatabase();
@@ -45,25 +54,33 @@ export class blocksfoundComponent implements OnInit {
   	    }
 
         this.dashCard[0].text = data.length;
-  	    this.dataSource = new ExampleDataSource(this.exampleDatabase);
+  	    //this.dataSource = new ExampleDataSource(this.exampleDatabase);
+        this.length =  data.length;
+        this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
 
-        this.HttpdataService.get_request(this.HttpdataService.GET_STATISTICS).subscribe(
+        //console.log(this.dataSource);
+        observableFromEvent(this.filter.nativeElement, 'keyup').pipe(
+          debounceTime(150),
+          distinctUntilChanged()
+        ).subscribe(() => {
+            if (!this.dataSource) { return; }
+            this.dataSource.filter = this.filter.nativeElement.value;
+          }
+        );
+
+        this.HttpdataService.get_request(this.HttpdataService.POOL_GET_STATISTICS).subscribe(
           (res) => {
             var data = JSON.parse(JSON.stringify(res));
             this.total_average = ((parseInt(data.block_verifier_total_rounds)/(100*this.total_blocks_found))*100) | 0;
             this.dashCard[0].text = data.length;
             this.dashCard[1].text = this.total_average;
-            this.dataSource = new ExampleDataSource(this.exampleDatabase);
-        	  },
-        	  (error) =>
-                  {
-        	    Swal.fire("Error","An error has occured","error");
+            //this.dataSource = new ExampleDataSource(this.exampleDatabase);
+        	  }, (error) => {
+        	    Swal.fire("Error","An error has occured.<br/>Get statistics failed.","error");
         	  }
   	     );
-  	  },
-  	  (error) =>
-            {
-  	    Swal.fire("Error","An error has occured","error");
+  	  }, (error) => {
+  	    Swal.fire("Error","An error has occured.<br/>Get blocks failed.","error");
   	  }
     );
   }
