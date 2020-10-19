@@ -1,42 +1,74 @@
 
 .table-container {
-position: relative;
-margin-top:50px;
-padding: 5px 15px 15px 15px;
+	position: relative;
+	margin-top:50px;
+	padding: 5px 0px 15px 0px;
 }
 .table-container .mat-table {
-max-height: calc(100vh - 200px);
-overflow-y: auto;
+	width: 100%;
 }
 .table-container .mat-table .mat-header-row {
-position: absolute;
-top: -50px;
-left: 0px;
-right: 18px;
-background: #fff;
+	position: absolute;
+	top: -50px;
+	left: 0px;
+	right: 18px;
+	background: #fff;
 }
 .table-header {
-	background-color: #039be5;
+	background-color: #1189a5;
 	color: white;
-	padding: 0 5px;
+	padding: 0 0px;
 }
 .table-component-holder {
-	border: 1px solid #039be5;
+	border: 1px solid #1189a5;
 	background-color: white;
+}
+.mat-toolbar-single-row{
+	height: 75px;
+}
+.mat-form-field {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-form-field-wrapper{
+	padding-bottom: 0.8em;
+}
+.mat-cell{
+  font-weight: 300;
+  text-align: center;
+}
+.mat-cell h5, .mat-cell a {
+ 	font-weight: 500;
+  font-size: 14px;
+  text-align: left;
+}
+.mat-header-cell{
+ 	font-weight: 500;
+  font-size: 14px;
+}
+p.hash {
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow:    ellipsis;
 }
 
 .mat-column-ID {
-  flex: 0 0 5%;
+  flex: 0 0 3%;
 }
 .mat-column-date_and_time {
-  flex: 0 0 10%;
-}
-.mat-column-tx_hash {
-  flex: 0 0 45%;
-}
-.mat-column-tx_key {
-  flex: 0 0 45%;
+  flex: 0 0 12%;
 }
 .mat-column-total {
-  flex: 0 0 10%;
+  flex: 0 0 12%;
+}
+.mat-column-tx_hash {
+  flex: 0 0 38%;
+	margin-right: 15px;
+}
+.mat-column-tx_key {
+  flex: 0 0 35%;
 }
