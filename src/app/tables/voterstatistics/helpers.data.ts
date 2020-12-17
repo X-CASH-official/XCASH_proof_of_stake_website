@@ -16,16 +16,18 @@ export class ExampleDatabase {
   }
 
   /** Adds a new user to the database. */
-  addUser(id:string,date_and_time:string,tx_hash:string,tx_key:string,total:string) {
+  addUser(id:string,payment_name:string,payment_address:string,date_and_time:string,tx_hash:string,tx_key:string,total:string) {
     const copiedData = this.data.slice();
-    copiedData.push(this.createNewUser(id,date_and_time,tx_hash,tx_key,total));
+    copiedData.push(this.createNewUser(id,payment_name,payment_address,date_and_time,tx_hash,tx_key,total));
     this.dataChange.next(copiedData);
   }
 
   /** Builds and returns a new User. */
-  private createNewUser(id:string,date_and_time:string,tx_hash:string,tx_key:string,total:string) {
+  private createNewUser(id:string,payment_name:string,payment_address:string,date_and_time:string,tx_hash:string,tx_key:string,total:string) {
     return {
       id: id,
+      payment_name: payment_name,
+      payment_address: payment_address,
       date_and_time: date_and_time,
       tx_hash: tx_hash,
       tx_key: tx_key,

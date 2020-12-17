@@ -15,6 +15,8 @@ export interface voterslistdata {
 
 export interface voterstatisticsdata {
   id: string;
+  payment_name: string;
+  payment_address: string;
   date_and_time: string;
   tx_hash: string;
   tx_key: string;
