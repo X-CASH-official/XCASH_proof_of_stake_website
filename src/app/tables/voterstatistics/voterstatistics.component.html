@@ -34,6 +34,16 @@
 					<mat-cell id="id{{row.id}}" *matCellDef="let row"> {{row.id | number}} </mat-cell>
 				</ng-container>
 
+                                <ng-container matColumnDef="payment_name">
+					<mat-header-cell *matHeaderCellDef> Payment Name </mat-header-cell>
+					<mat-cell id="payment_name{{row.id}}" *matCellDef="let row"> {{row.payment_name}} </mat-cell>
+				</ng-container>
+
+                                <ng-container matColumnDef="payment_address">
+					<mat-header-cell *matHeaderCellDef> Payment Address </mat-header-cell>
+					<mat-cell id="payment_address{{row.id}}" *matCellDef="let row"> {{row.payment_address}} </mat-cell>
+				</ng-container>
+
 				<ng-container matColumnDef="date_and_time">
 					<mat-header-cell *matHeaderCellDef mat-sort-header> Date </mat-header-cell>
 					<mat-cell id="date_and_time{{row.id}}" *matCellDef="let row"> {{row.date_and_time | date:'short'}} </mat-cell>

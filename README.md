@@ -41,7 +41,7 @@ See how many blocks the delegate you voted for has found.
 
 ## License
 
-**The X-Cash Delegate Explorer is an open-source project managed by the X-Cash Foundation**.  
+**The X-Cash Delegates Pool Website is an open-source project managed by the X-Cash Foundation**.  
 We are operating under the [MIT License](LICENSE).
 
 ## Contributing
@@ -62,9 +62,9 @@ All security vulnerabilities concerning the X-Cash blockchain will be promply ad
 
 ## System Requirements
 
-*The explorer is optional for delegates to run, as the network nodes will run it already.*
+*The delegates pool website is optional for delegates to run, as the network nodes will run it already.*
 
-To run the delegates explorer, it needs to be on the same server as an X-Cash node. The system requirements for running a node are in the [`xcash-dpops`](https://github.com/X-CASH-official/xcash-dpops/tree/master#system-requirements) repository.
+To run the delegates pool website, it needs to be on the same server as an X-Cash node. The system requirements for running a node are in the [`xcash-dpops`](https://github.com/X-CASH-official/xcash-dpops/tree/master#system-requirements) repository.
 
 > At the moment, [`xcash-dpops`](https://github.com/X-CASH-official/xcash-dpops/) is only available for Linux/Unix distributions.
 
@@ -73,7 +73,7 @@ To run the delegates explorer, it needs to be on the same server as an X-Cash no
 
 ### Dependencies
 
-> The following table summarizes the tools and libraries required to run the delegates explorer.
+> The following table summarizes the tools and libraries required to run the delegates pool website.
 
 | Dependencies | Min. version   | Ubuntu package                                                      |
 | ------------ | -------------- | ------------------------------------------------------------------- |
@@ -136,13 +136,13 @@ npm install -g uglify-js
 
 In your desired folder, clone the repository:
 ```shell
-git clone https://github.com/X-CASH-official/delegates-explorer.git
+git clone https://github.com/X-CASH-official/delegates-pool-website.git
 ```
 
 #### Install dependencies
 
 ```shell
-~cd /delegates-explorer
+~cd /delegates-pool-website
 npm install
 ```
 
@@ -162,7 +162,7 @@ Run the firewall script
 
 #### Build
 
-To build the delegate explorer, go to the `delegates-explorer` folder and run:
+To build the delegates pool website, go to the `delegates-pool-website` folder and run:
 ```shell
 npm run build
 ```
@@ -174,10 +174,10 @@ Compress the `.js` files with `Uglify-JS` and move all of the contents of this f
 ```shell
 cd dist
 for f in *.js; do echo "Processing $f file.."; uglifyjs $f --compress --mangle --output "{$f}min"; rm $f; mv "{$f}min" $f; done
-rm -r ~/xcash-dpops/delegates-explorer
-mkdir ~/xcash-dpops/delegates-explorer
+rm -r ../xcash-dpops/delegates-pool-website
+mkdir ../xcash-dpops/delegates-pool-website
 cd ../
-cp -a dist/* ~/xcash-dpops/delegates-explorer/
+cp -a dist/* ../xcash-dpops/delegates-pool-website/
 ```
 
 ### Testing
@@ -186,7 +186,7 @@ cp -a dist/* ~/xcash-dpops/delegates-explorer/
 npm test
 ```
 
-To test that you have properly configured the delegates explorer, run `xcash-dpops` with the `--test_data_add` flag. *This will add test datas to the MongoDB.*
+To test that you have properly configured the delegates pool website, run `xcash-dpops` with the `--test_data_add` flag. *This will add test datas to the MongoDB.*
 
 Now run the website server again using the normal options.
 
