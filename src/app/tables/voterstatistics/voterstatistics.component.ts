@@ -133,9 +133,10 @@ export class voterstatisticsComponent implements OnInit {
 
 
 	ngOnInit() {
-
-    this.get_public_address_payment_information(this.route.snapshot.queryParamMap.get("data"));
-    this.get_public_address_information(this.route.snapshot.queryParamMap.get("data"));
+    let voter_public_address; 
+    this.voter_public_address = this.route.snapshot.queryParamMap.get("data");
+    this.get_public_address_payment_information(voter_public_address);
+    this.get_public_address_information(voter_public_address);
 
 	}
 }
