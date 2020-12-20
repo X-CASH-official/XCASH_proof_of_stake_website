@@ -65,6 +65,15 @@ export class voterslistComponent implements OnInit {
 
             this.length = this.amount_of_votes;
             this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
+
+            observableFromEvent(this.filter.nativeElement, 'keyup').pipe(
+              debounceTime(150),
+              distinctUntilChanged()
+            ).subscribe(() => {
+                if (!this.dataSource) { return; }
+                this.dataSource.filter = this.filter.nativeElement.value;
+              }
+            );
           },
           (error) => {
             Swal.fire("Error","An error has occured","error");
