@@ -55,7 +55,7 @@ We are hosting our documentation on **GitBook** 👉 [**docs.xcash.foundation**]
 
 > You can contribute directly on our [`gitbook-docs`](https://github.com/X-CASH-official/gitbook-docs) repository.
 
-## Security 
+## Security
 
 If you discover a **security** vulnerability, please send an e-mail to [security@xcash.foundation](mailto:security@xcash.foundation).  
 All security vulnerabilities concerning the X-Cash blockchain will be promply addressed.
@@ -68,7 +68,7 @@ To run the delegates explorer, it needs to be on the same server as an X-Cash no
 
 > At the moment, [`xcash-dpops`](https://github.com/X-CASH-official/xcash-dpops/) is only available for Linux/Unix distributions.
 
- 
+
 ## Installation Process
 
 ### Dependencies
@@ -109,7 +109,7 @@ echo -e '\nexport PATH=path_to_nodejs/bin:$PATH' >> ~/.profile && source ~/.prof
 
 > Note if your installing on a `root` session, you need to run these additional commands before upgrading
 > ```bash
-> npm config set user 0 
+> npm config set user 0
 > npm config set unsafe-perm true
 > ```
 
@@ -118,14 +118,14 @@ Update `npm` globally:
 npm install -g npm
 ```
 
-#### angular 
+#### angular
 
-Install the latest version of Angular globally: 
-```shell 
+Install the latest version of Angular globally:
+```shell
 npm install -g @angular/cli@latest
 ```
 
-Then install the compressor `UglifyJS` globally : 
+Then install the compressor `UglifyJS` globally :
 ```shell
 npm install -g uglify-js
 ```
@@ -137,7 +137,7 @@ npm install -g uglify-js
 In your desired folder, clone the repository:
 ```shell
 git clone https://github.com/X-CASH-official/delegates-explorer.git
-``` 
+```
 
 #### Install dependencies
 
@@ -146,9 +146,19 @@ git clone https://github.com/X-CASH-official/delegates-explorer.git
 npm install
 ```
 
-#### Redirect port 80 to 18283
+#### Enable port 80 in the firewall and redirect port 80 to 18283
 
-Make sure to follow the steps to [setup the firewall for `xcash-dpops`](https://github.com/X-CASH-official/xcash-dpops#how-to-setup-the-firewall)
+Uncomment these lines in `$HOME/firewall_script.sh`
+```
+# iptables -t filter -I INPUT -p tcp --syn --dport 80 -m connlimit --connlimit-above 100 --connlimit-mask 32 -j DROP
+```
+
+```
+# iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+```
+
+Run the firewall script  
+`$HOME/firewall_script.sh`
 
 #### Build
 
@@ -174,7 +184,7 @@ cp -a dist/* ~/xcash-dpops/delegates-explorer/
 
 ```shell
 npm test
-``` 
+```
 
 To test that you have properly configured the delegates explorer, run `xcash-dpops` with the `--test_data_add` flag. *This will add test datas to the MongoDB.*
 
