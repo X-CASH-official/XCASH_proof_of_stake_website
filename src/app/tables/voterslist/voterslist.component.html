@@ -28,12 +28,14 @@
 				</ng-container>
 
         <ng-container matColumnDef="total">
-					<mat-header-cell *matHeaderCellDef  mat-sort-header> Vote count </mat-header-cell>
-					<mat-cell id="total{{row.id}}" *matCellDef="let row">{{row.total | number:'1.0-1' }} XCA</mat-cell>
+					<mat-header-cell *matHeaderCellDef  mat-sort-header> Vote </mat-header-cell>
+					<mat-cell id="total{{row.id}}" *matCellDef="let row">{{row.total | number }} XCA</mat-cell>
 				</ng-container>
 
 				<ng-container matColumnDef="public_address_created_reserve_proof">
-					<mat-header-cell *matHeaderCellDef  mat-sort-header> Voters public address </mat-header-cell>
+					<mat-header-cell *matHeaderCellDef  mat-sort-header>
+            <span matTooltip="Public address that created reserve proof">Voters public address</span>
+          </mat-header-cell>
 					<mat-cell id="public_address_created_reserve_proof{{row.id}}" *matCellDef="let row">
             <a class="text-primary" title="View voter statistics" [routerLink]="['/auth/tables/voterstatistics']" [queryParams]="{'data':row.public_address_created_reserve_proof}">
                 <p class="hash">{{row.public_address_created_reserve_proof}}</p>
@@ -41,10 +43,15 @@
           </mat-cell>
 				</ng-container>
 
-				<ng-container matColumnDef="reserve_proof">
-					<mat-header-cell *matHeaderCellDef  mat-sort-header> Reserve proof </mat-header-cell>
-					<mat-cell id="reserve_proof{{row.id}}" *matCellDef="let row">
-              <p class="hash">{{row.reserve_proof}}</p>
+        <ng-container matColumnDef="reserve_proof">
+					<mat-header-cell *matHeaderCellDef mat-sort-header>
+              <mat-icon aria-label="Reserve Proof"  matTooltip="Reserve Proof">offline_pin</mat-icon>
+          </mat-header-cell>
+					<mat-cell id="reserve_proof{{ row.id }}" *matCellDef="let row" matTooltipClass="extralong-tooltip" >
+            <!-- {{ row.reserve_proof | slice:0:25 }} ... -->
+            <button mat-icon-button (click)="functionsService.copyReserveProof(row.reserve_proof)" aria-label="View Reserve Proof" matTooltip="View Reserve Proof">
+              <em class="material-icons app-toolbar-menu">pageview </em>
+            </button>
           </mat-cell>
 				</ng-container>
 

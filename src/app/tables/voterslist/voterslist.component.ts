@@ -4,6 +4,8 @@ import {distinctUntilChanged, debounceTime} from 'rxjs/operators';
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import {HttpdataService} from '../../services/http-request.service';
+import { FunctionsService } from '../../services/functions.service';
+
 import Swal from 'sweetalert2';
 
 import { MatPaginator, MatSort } from '@angular/material';
@@ -32,7 +34,7 @@ export class voterslistComponent implements OnInit {
 	public dataSource: ExampleDataSource | null;
 	public showFilterTableCode;
 
-	constructor(private HttpdataService: HttpdataService) { }
+	constructor(private httpdataservice: HttpdataService, public functionsService: FunctionsService) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
@@ -41,13 +43,13 @@ export class voterslistComponent implements OnInit {
 
 	ngOnInit() {
     // get the data
-    this.HttpdataService.get_request(this.HttpdataService.POOL_GET_STATISTICS).subscribe(
+    this.httpdataservice.get_request(this.httpdataservice.POOL_GET_STATISTICS).subscribe(
       (res) =>   {
         var data = JSON.parse(JSON.stringify(res));
         this.public_address = data.public_address;
 
         // get the data
-        this.HttpdataService.get_request(this.HttpdataService.POOL_GET_DELEGATES_VOTERS_LIST + "?parameter1=" + this.public_address).subscribe(
+        this.httpdataservice.get_request(this.httpdataservice.POOL_GET_DELEGATES_VOTERS_LIST + "?parameter1=" + this.public_address).subscribe(
           (res) => {
             this.exampleDatabase = new ExampleDatabase();
             var data = JSON.parse(JSON.stringify(res));
@@ -56,7 +58,7 @@ export class voterslistComponent implements OnInit {
             var count = 0;
             var total = 0;
             for (count = 0; count < this.amount_of_votes; count++) {
-              total = parseInt(data[count].total) / this.HttpdataService.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+              total = parseInt(data[count].total) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
               this.total_vote_count += total;
               this.exampleDatabase.addUser((count + 1).toString(),data[count].public_address_created_reserve_proof.toString(),total.toString(),data[count].reserve_proof.toString());
             }
