@@ -22,32 +22,32 @@ export class DashboardCrmComponent implements OnInit {
     block_verifier_total_rounds:number;
 
     public dashCard1 = [
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: false,  width_icon: 20, text_size: 40, text: '', suffix: '',  title: 'VOTE COUNT', icon: 'done_all' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: false,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'XCASH FROM BLOCKS PRODUCED', icon: 'pageview' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: false, width_icon: 20, text_size: 36, text: '', suffix: '',  title: 'ONLINE STATUS', icon: 'online_prediction' },
+      { ogmeter: false,  width_icon: 20, text_size: 40, text: '', suffix: '',  title: 'VOTE COUNT', icon: 'done_all' },
+      { ogmeter: false,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'XCASH FROM BLOCKS PRODUCED', icon: 'pageview' },
+      { ogmeter: false, width_icon: 20, text_size: 36, text: '', suffix: '',  title: 'ONLINE STATUS', icon: 'online_prediction' },
     ];
     public dashCard2 = [
 
     ];
     public dashCard3 = [
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'DELEGATE RANK ', icon: 'leaderboard' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'BLOCKS PRODUCED ', icon: 'find_in_page' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '%',  title: 'ONLINE PERCENTAGE', icon: 'update' }
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'DELEGATE RANK ', icon: 'leaderboard' },
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'BLOCKS PRODUCED ', icon: 'find_in_page' },
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '%',  title: 'ONLINE PERCENTAGE', icon: 'update' }
     ];
     public dashCard4 = [
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '%',  title: 'PRODUCER/VERIFIER RATIO', icon: 'star_half' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'EST ROUNDS BTW PRODUCED BLOCKS', icon: 'published_with_changes' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: false,  width_icon: 20, text_size: 40, text: '', suffix: '',  title: 'SINCE LAST BLOCK PRODUCED', icon: 'alarm_on' }
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '%',  title: 'PRODUCER/VERIFIER RATIO', icon: 'star_half' },
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'EST ROUNDS BTW PRODUCED BLOCKS', icon: 'published_with_changes' },
+      { ogmeter: false,  width_icon: 20, text_size: 40, text: '', suffix: '',  title: 'SINCE LAST BLOCK PRODUCED', icon: 'alarm_on' }
     ];
   	public  dashCard5 = [
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'VERIFIERS ONLINE ROUNDS', icon: 'model_training' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'VERIFIER ROUNDS', icon: 'autorenew' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'PRODUCER ROUNDS', icon: 'find_replace' }
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'VERIFIERS ONLINE ROUNDS', icon: 'model_training' },
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'VERIFIER ROUNDS', icon: 'autorenew' },
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'PRODUCER ROUNDS', icon: 'find_replace' }
     ];
     public dashCard6 = [
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: false, width_icon: 20, text_size: 40, text: '', suffix: '%', title: 'FEE PERCENTAGE', icon: 'local_atm' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: false, width_icon: 20, text_size: 40, text: '', suffix: 'XCA', title: 'MINIMUM PAYMENT AMOUNT', icon: 'attach_money' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'PAYMENTS', icon: 'payment' }
+      { ogmeter: false, width_icon: 20, text_size: 40, text: '', suffix: '%', title: 'FEE PERCENTAGE', icon: 'local_atm' },
+      { ogmeter: false, width_icon: 20, text_size: 40, text: '', suffix: 'XCA', title: 'MINIMUM PAYMENT AMOUNT', icon: 'attach_money' },
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'PAYMENTS', icon: 'payment' }
     ];
 
 

@@ -22,8 +22,63 @@
   <script src="https://d3js.org/topojson.v2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
 
+
+  <style media="screen">
+  /* critical preloader css */
+  .loader-container {
+
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    position: absolute;
+    -moz-animation: cssAnimation 1s ease-in 3s forwards;
+    animation: cssAnimation 1s ease-in 3s forwards;
+    -o-animation: cssAnimation 1s ease-in 3s forwards;
+    animation-fill-mode: forwards;
+  }
+  @keyframes cssAnimation {
+    to {
+      opacity:0;
+      display: none;
+      visibility:hidden;
+    }
+  }
+  .spinner {
+    margin: 50vh auto 0;
+    width: 120px;
+    text-align: center;
+    animation: spin 3s linear infinite;
+    -webkit-animation: spin 3s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% {  transform: rotate(359deg); }
+  }
+  #pulsar {
+    animation:pulse 1s infinite normal;
+    -webkit-animation: pulse 1s infinite normal;
+  }
+  @keyframes pulse {
+    0% {
+      -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+    70% {
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      transform: scale(1);
+    }
+    100% {
+      -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  }
+
+  </style>
 </head>
-<body>
+<body class="dark-theme">
 
   <app-root>
   </app-root>

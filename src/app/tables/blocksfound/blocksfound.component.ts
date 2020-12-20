@@ -17,14 +17,14 @@ import { MatPaginator, MatSort } from '@angular/material';
 export class blocksfoundComponent implements OnInit {
 
   public dashCard = [
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'BLOCKS FOUND', icon: 'find_in_page' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'EST ROUNDS BTW HITS', icon: 'published_with_changes' }
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'BLOCKS FOUND', icon: 'find_in_page' },
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'EST ROUNDS BTW HITS', icon: 'published_with_changes' }
   ];
 
   total_blocks_found:any = 0;
 	total_average:number = 0;
   length:number;
-  
+
   public displayedColumns = ['ID', 'block_height', 'block_date_and_time', 'block_reward', 'block_hash'];
 	public exampleDatabase = new ExampleDatabase();
 	public dataSource: ExampleDataSource | null;
@@ -76,11 +76,11 @@ export class blocksfoundComponent implements OnInit {
             this.dashCard[1].text = this.total_average;
             //this.dataSource = new ExampleDataSource(this.exampleDatabase);
         	  }, (error) => {
-        	    Swal.fire("Error","An error has occured.<br/>Get statistics failed.","error");
+        	    Swal.fire("Error","An error has occured.<br/>API: Get statistics failed.","error");
         	  }
   	     );
   	  }, (error) => {
-  	    Swal.fire("Error","An error has occured.<br/>Get blocks failed.","error");
+  	    Swal.fire("Error","An error has occured.<br/>API: Get blocks failed.","error");
   	  }
     );
   }

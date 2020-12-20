@@ -19,8 +19,8 @@ import { MatPaginator, MatSort } from '@angular/material';
 export class voterslistComponent implements OnInit {
 
 	public dashCard = [
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: ' XCA', title: 'VOTE COUNT', icon: 'done_all' },
-      { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'VOTERS', icon: 'how_to_reg' }
+      { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: ' XCA', title: 'VOTE COUNT', icon: 'done_all' },
+      { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'VOTERS', icon: 'how_to_reg' }
   ];
 	total_vote_count:any = 0;
 	amount_of_votes:any = 0;

@@ -1,53 +1,19 @@
-
-.table-container {
-	position: relative;
-	margin-top:50px;
-	padding: 5px 0px 15px 0px;
-}
-.table-container .mat-table {
-	width: 100%;
-}
-.table-container .mat-table .mat-header-row {
-	position: absolute;
-	top: -50px;
-	left: 0px;
-	right: 18px;
-	background: #fff;
-}
-.table-header {
-	background-color: #1189a5;
-	color: white;
-	padding: 0 0px;
-}
-.table-component-holder {
-	border: 1px solid #1189a5;
-	background-color: white;
-}
 .mat-toolbar-single-row{
 	height: 75px;
 }
 .mat-form-field {
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+		font-weight: 500;
+		line-height: normal;
+		font-family: Roboto, "Helvetica Neue", sans-serif;
+		padding: 0px;
+		margin:0;
+
+		width: 100%;
 }
-.mat-form-field-wrapper{
-	padding-bottom: 0.8em;
-}
-.mat-cell{
-  font-weight: 300;
-  text-align: center;
-}
-.mat-cell h5, .mat-cell a {
- 	font-weight: 500;
-  font-size: 14px;
-  text-align: left;
-}
-.mat-header-cell{
- 	font-weight: 500;
-  font-size: 14px;
-}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {text-align: center !important; margin-left: 52px !important;}
+
+
 p.hash {
     white-space: nowrap;
     width: 100%;

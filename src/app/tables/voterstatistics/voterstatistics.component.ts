@@ -18,13 +18,13 @@ import { MatPaginator, MatSort } from '@angular/material';
 export class voterstatisticsComponent implements OnInit {
 
 	public dashCard1 = [
-        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'CURRENT_AMOUNT', icon: 'assignments' },
-        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'TOTAL AMOUNT PAID', icon: 'done' }
+        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'CURRENT_AMOUNT', icon: 'assignments' },
+        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'TOTAL AMOUNT PAID', icon: 'done' }
     ];
 
   public dashCard2 = [
-        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: ' XCA', title: 'TOTAL NUMBER OF PAYMENTS', icon: 'cloud' },
-        { colorDark: '#1189a5', colorLight: '#fa741c',  colorFont: '#ffffff', ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'INACTIVITY_TOTAL', icon: 'info' }
+        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: ' XCA', title: 'TOTAL NUMBER OF PAYMENTS', icon: 'cloud' },
+        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'INACTIVITY_TOTAL', icon: 'info' }
     ];
 
   XCASH_WALLET_LENGTH:number = 98;
