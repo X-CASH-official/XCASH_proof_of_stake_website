@@ -1,7 +1,7 @@
 <h2 class="page_title">Voters</h2>
 
 <div fxLayout="row" fxLayout="row wrap">
-    <div *ngFor="let dash of dashCard; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+    <div *ngFor="let dash of dashCard; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="50">
         <cdk-dashcard id="dashcard{{count+1}}" [dashData]="dash"></cdk-dashcard>
     </div>
 </div>
