@@ -428,6 +428,15 @@ $spin_background-darksea: mat-palette($warning-darksea, 900, 0.9);
     text-align: center;
     padding: 16px;
     margin: 10px 5px;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-word;
+    word-break: break-word;
+    -ms-hyphens: manual;
+    -moz-hyphens: manual;
+    -webkit-hyphens: manual;
+    hyphens: manual;
   }
   .page_subtitle{
     font: 500 20px Roboto, "Helvetica Neue", sans-serif;
