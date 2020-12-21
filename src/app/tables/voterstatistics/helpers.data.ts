@@ -18,22 +18,22 @@ export class ExampleDatabase {
   }
 
   /** Adds a new user to the database. */
-  addUser(id:string,payment_name:string,payment_address:string,date_and_time:string,tx_hash:string,tx_key:string,total:string) {
+  addUser(id:string,date_and_time:string,total:string,payment_name:string,payment_address:string,tx_hash:string,tx_key:string) {
     const copiedData = this.data.slice();
-    copiedData.push(this.createNewUser(id,payment_name,payment_address,date_and_time,tx_hash,tx_key,total));
+    copiedData.push(this.createNewUser(id,date_and_time,total,payment_name,payment_address,tx_hash,tx_key));
     this.dataChange.next(copiedData);
   }
 
   /** Builds and returns a new User. */
-  private createNewUser(id:string,payment_name:string,payment_address:string,date_and_time:string,tx_hash:string,tx_key:string,total:string) {
+  private createNewUser(id:string,date_and_time:string,total:string,payment_name:string,payment_address:string,tx_hash:string,tx_key:string) {
     return {
       id: id,
+      date_and_time: date_and_time,
+      total: total,
       payment_name: payment_name,
       payment_address: payment_address,
-      date_and_time: date_and_time,
       tx_hash: tx_hash,
-      tx_key: tx_key,
-      total: total
+      tx_key: tx_key
     };
   }
 }
@@ -104,9 +104,10 @@ export class ExampleDataSource extends DataSource<any> {
       switch (this._sort.active) {
         case 'id': [propertyA, propertyB] = [a.id, b.id]; break;
         case 'date_and_time': [propertyA, propertyB] = [a.date_and_time, b.date_and_time]; break;
+        case 'total': [propertyA, propertyB] = [a.total, b.total]; break;
         case 'tx_hash': [propertyA, propertyB] = [a.tx_hash, b.tx_hash]; break;
         case 'tx_key': [propertyA, propertyB] = [a.tx_key, b.tx_key]; break;
-        case 'total': [propertyA, propertyB] = [a.total, b.total]; break;
+
       }
 
       let valueA = isNaN(+propertyA) ? propertyA : +propertyA;

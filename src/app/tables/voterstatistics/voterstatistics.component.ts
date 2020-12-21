@@ -18,13 +18,13 @@ import { MatPaginator, MatSort } from '@angular/material';
 export class voterstatisticsComponent implements OnInit {
 
 	public dashCard1 = [
-        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'CURRENT_AMOUNT', icon: 'assignments' },
-        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'TOTAL AMOUNT PAID', icon: 'done' }
+        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'CURRENT AMOUNT', icon: 'local_atm' },
+        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'TOTAL AMOUNT PAID', icon: 'monetization_on' }
     ];
 
   public dashCard2 = [
-        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: ' XCA', title: 'TOTAL NUMBER OF PAYMENTS', icon: 'cloud' },
-        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'INACTIVITY_TOTAL', icon: 'info' }
+        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: ' XCA', title: 'TOTAL NUMBER OF PAYMENTS', icon: 'payments' },
+        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'INACTIVITY TOTAL', icon: 'error' }
     ];
 
   XCASH_WALLET_LENGTH:number = 98;
@@ -63,9 +63,16 @@ export class voterstatisticsComponent implements OnInit {
   	      // calculate the total amount paid
           total = parseInt(data[count].total) / this.HttpdataService.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
   	      this.total_amount_paid += total;
-  	     // this.exampleDatabase.addUser((count + 1).toString(),(parseInt(data[count].date_and_time) * 1000).toString(),data[count].tx_hash.toString(),data[count].tx_key.toString(),total.toString());
-          this.exampleDatabase.addUser((count + 1).toString(),data[count].payment_name.toString(),data[count].payment_address.toString(),(parseInt(data[count].date_and_time) * 1000).toString(),data[count].tx_hash.toString(),data[count].tx_key.toString(),total.toString());
-
+          this.exampleDatabase.addUser(
+            (count + 1).toString(),
+            (parseInt(data[count].date_and_time) * 1000),
+            total.toString(),
+            // 'abc abc',
+            // 'XCA1SovyvJ7P5FNPVdzT4hMVgFGADM8EJ2dzuMRgQY44E37RZYm4m5WaMtzghVKGNSaEfWoqx1coB7RwnqgAAJp13txjtM1H8k',
+            data[count].payment_name.toString(),
+            data[count].payment_address.toString(),
+            data[count].tx_hash.toString(),
+            data[count].tx_key.toString());
         }
 
   	    this.dashCard1[1].text = this.total_amount_paid;
