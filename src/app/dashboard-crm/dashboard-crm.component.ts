@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpdataService} from '../services/http-request.service';
+import { FunctionsService } from '../services/functions.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -37,7 +38,7 @@ export class DashboardCrmComponent implements OnInit {
     public dashCard4 = [
       { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '%',  title: 'PRODUCER/VERIFIER RATIO', icon: 'star_half' },
       { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'EST ROUNDS BTW PRODUCED BLOCKS', icon: 'published_with_changes' },
-      { ogmeter: false,  width_icon: 20, text_size: 40, text: '', suffix: '',  title: 'SINCE LAST BLOCK PRODUCED', icon: 'alarm_on' }
+      { ogmeter: false,  width_icon: 20, text_size: 40, text: '-', suffix: '',  title: 'SINCE LAST BLOCK PRODUCED', icon: 'alarm_on' }
     ];
   	public  dashCard5 = [
       { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '',  title: 'VERIFIERS ONLINE ROUNDS', icon: 'model_training' },
@@ -47,19 +48,19 @@ export class DashboardCrmComponent implements OnInit {
     public dashCard6 = [
       { ogmeter: false, width_icon: 20, text_size: 40, text: '', suffix: '%', title: 'FEE PERCENTAGE', icon: 'local_atm' },
       { ogmeter: false, width_icon: 20, text_size: 40, text: '', suffix: 'XCA', title: 'MINIMUM PAYMENT AMOUNT', icon: 'attach_money' },
-      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'PAYMENTS', icon: 'payment' }
+      { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'PAYMENTS', icon: 'payments' }
     ];
 
 
 
-    constructor(private HttpdataService: HttpdataService) { }
+    constructor(private httpdataservice: HttpdataService, public functionsService: FunctionsService) { }
 
     get_delegate_stats() {
-      this.HttpdataService.get_request(this.HttpdataService.EXPLORER_GET_DELEGATES_STATISTICS + "?parameter1=" + this.delegate_name).subscribe(
+      this.httpdataservice.get_request(this.httpdataservice.EXPLORER_GET_DELEGATES_STATISTICS + "?parameter1=" + this.delegate_name).subscribe(
         (res) =>
         {
           var info_data = JSON.parse(JSON.stringify(res));
-          let xcash_wallet_decimal_places_amount = this.HttpdataService.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+          let xcash_wallet_decimal_places_amount = this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
           var block_producer_block_heights = info_data.block_producer_block_heights.split("|");
           var count = 0;
 
@@ -70,16 +71,19 @@ export class DashboardCrmComponent implements OnInit {
       	  }
 
           this.about = info_data.about;
+
           this.website = info_data.website;
           this.team = info_data.team;
           this.server_specs = info_data.server_specs;
-          this.shared_delegate_status = info_data.shared_delegate_status == 'true' ? 'Shared'  : 'Solo';
+          console.log(info_data);
+
+          this.shared_delegate_status = info_data.shared_delegate_status == 'solo' ? 'Solo' : info_data.shared_delegate_status == 'shared' ? 'Shared' : 'Group';
           this.delegate_fee = info_data.delegate_fee;
 
           this.dashCard1[2].text = info_data.online_status == 'true' ? 'Online'  : 'Offline';
 
           this.dashCard4[0].text = parseInt(info_data.block_producer_total_rounds) / parseInt(info_data.block_verifier_total_rounds) * 100;
-          this.dashCard4[1].text = parseInt(info_data.block_verifier_total_rounds) / block_producer_block_heights.length;;
+          this.dashCard4[1].text = block_producer_block_heights.length > 0 ? parseInt(info_data.block_verifier_total_rounds) / block_producer_block_heights.length : "0";
 
           this.dashCard5[0].text = parseInt(info_data.block_verifier_online_total_rounds);
           this.dashCard5[1].text = info_data.block_verifier_total_rounds; //parseInt(info_data.block_verifier_total_rounds);
@@ -94,14 +98,18 @@ export class DashboardCrmComponent implements OnInit {
 
     get_delegate_website_statistics()
     {
-      this.HttpdataService.get_request(this.HttpdataService.EXPLORER_GET_DELEGATE_WEBSITE_STATISTICS).subscribe(
+      this.httpdataservice.get_request(this.httpdataservice.EXPLORER_GET_DELEGATE_WEBSITE_STATISTICS).subscribe(
         (res) =>
         {
-          var statistic_data = JSON.parse(JSON.stringify(res));
-          var minutes_since_last_block_found = ((parseInt(statistic_data.current_block_height) - this.last_block_found) * this.HttpdataService.BLOCK_TIME);
-          var minutes = minutes_since_last_block_found % 60;
-          var hours = (minutes_since_last_block_found-minutes) / 60;
-          this.dashCard4[2].text =  "~ " + hours.toString() + "h " + (minutes<10?"0":"") + minutes.toString() + "m";
+          if (this.last_block_found) {
+            var statistic_data = JSON.parse(JSON.stringify(res));
+            var minutes_since_last_block_found = ((parseInt(statistic_data.current_block_height) - this.last_block_found) * this.httpdataservice.BLOCK_TIME);
+            var minutes = minutes_since_last_block_found % 60;
+            var hours = (minutes_since_last_block_found-minutes) / 60;
+            this.dashCard4[2].text =  "~ " + hours.toString() + "h " + (minutes<10?"0":"") + minutes.toString() + "m";
+          }else{
+            this.dashCard4[2].text =  "∞";
+          }
         },
         (error) => {
           Swal.fire("Error","An error has occured.<br/>Get delegate website statistics found.","error");
@@ -109,18 +117,9 @@ export class DashboardCrmComponent implements OnInit {
       );
     }
 
-    get_lg_numer_format(value){
-      var exp, suffixes = ['k', 'M', 'B', 't', 'q', 'Q'];
-      if (Number.isNaN(value)) { return null; }
-      if (value < 1000) { return value; }
-      exp = Math.floor(Math.log(value) / Math.log(1000));
-      return (value / Math.pow(1000, exp)).toFixed(1) + suffixes[exp - 1];
-    }
-
-
     ngOnInit() {
       // get the data
-  	  this.HttpdataService.get_request(this.HttpdataService.POOL_GET_STATISTICS).subscribe(
+  	  this.httpdataservice.get_request(this.httpdataservice.POOL_GET_STATISTICS).subscribe(
     	  (res) =>
     	  {
           var data = JSON.parse(JSON.stringify(res));
@@ -128,8 +127,8 @@ export class DashboardCrmComponent implements OnInit {
           this.public_address = data.public_address;
           this.delegate_name = data.delegate_name;
 
-          this.dashCard1[0].text = this.get_lg_numer_format(parseInt(data.total_votes) / this.HttpdataService.XCASH_WALLET_DECIMAL_PLACES_AMOUNT);
-          this.dashCard1[1].text = this.get_lg_numer_format(parseInt(data.total_xcash_from_blocks_found) / this.HttpdataService.XCASH_WALLET_DECIMAL_PLACES_AMOUNT);
+          this.dashCard1[0].text = this.functionsService.get_lg_numer_format(parseInt(data.total_votes) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT);
+          this.dashCard1[1].text = this.functionsService.get_lg_numer_format(parseInt(data.total_xcash_from_blocks_found) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT);
 
           this.dashCard3[0].text = data.current_delegate_rank;
           this.dashCard3[1].text = data.total_blocks_found;
