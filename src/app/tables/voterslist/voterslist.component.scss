@@ -13,8 +13,8 @@
 
 ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {text-align: center !important; margin-left: 52px !important;}
 
-.mat-column-id {
-	flex: 1 0 24px;
+.mat-column-ID {
+	flex: 1 0 34px;
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
@@ -23,8 +23,8 @@
   flex: 1 1 130px;
 }
 .mat-column-public_address_created_reserve_proof {
-  flex: 4 1 55%;
-	padding-right: 15px;
+  flex: 4 1 45%;
+	padding-right: 10px;
 }
 .mat-column-reserve_proof {
   flex: 1 0 24px;
