@@ -33,7 +33,7 @@ export class voterstatisticsComponent implements OnInit {
 	total_amount_paid:any = 0;
 	total_number_of_payments:any = 0;
 
-  public displayedColumns = ['ID', 'payment_name', 'payment_address', 'date_and_time', 'tx_hash', 'tx_key', 'total'];
+  public displayedColumns = ['ID', 'date_and_time', 'total', 'payment_name', 'payment_address', 'tx_hash', 'tx_key'];
 	public exampleDatabase;
 	public dataSource: ExampleDataSource | null;
 	public showFilterTableCode;

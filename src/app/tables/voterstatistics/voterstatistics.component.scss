@@ -23,24 +23,33 @@ p.hash {
 }
 
 .mat-column-ID {
-  flex: 0 0 3%;
+	flex: 1 0 24px;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
 }
 .mat-column-payment_name {
   flex: 0 0 10%;
 }
 .mat-column-payment_address {
-  flex: 0 0 25%;
+	flex: 4 1 45%;
+	padding-right: 10px;
 }
 .mat-column-date_and_time {
-  flex: 0 0 12%;
+  flex: 1 1  100px;
 }
 .mat-column-total {
   flex: 0 0 12%;
 }
 .mat-column-tx_hash {
-  flex: 0 0 38%;
-	margin-right: 15px;
+	flex: 2 1 24px;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
 }
 .mat-column-tx_key {
-  flex: 0 0 35%;
+	flex: 2 1 24px;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
 }

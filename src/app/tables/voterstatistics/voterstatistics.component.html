@@ -36,39 +36,59 @@
 					<mat-cell id="id{{row.id}}" *matCellDef="let row"> {{row.id | number}} </mat-cell>
 				</ng-container>
 
-                                <ng-container matColumnDef="payment_name">
-					<mat-header-cell *matHeaderCellDef> Payment Name </mat-header-cell>
+        <ng-container matColumnDef="date_and_time">
+					<mat-header-cell *matHeaderCellDef mat-sort-header> Date </mat-header-cell>
+					<mat-cell id="date_and_time{{ row.id }}" *matCellDef="let row">
+            <span matTooltip="{{ row.block_date_and_time | date:'full' }}">
+              {{ row.block_date_and_time | date:'dd/MM/yy HH:mm' }}
+            </span>
+          </mat-cell>
+				</ng-container>
+
+        <ng-container matColumnDef="payment_name">
+					<mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Payment Name"> Name </mat-header-cell>
 					<mat-cell id="payment_name{{row.id}}" *matCellDef="let row"> {{row.payment_name}} </mat-cell>
 				</ng-container>
 
-                                <ng-container matColumnDef="payment_address">
-					<mat-header-cell *matHeaderCellDef> Payment Address </mat-header-cell>
-					<mat-cell id="payment_address{{row.id}}" *matCellDef="let row"> {{row.payment_address}} </mat-cell>
-				</ng-container>
-
-				<ng-container matColumnDef="date_and_time">
-					<mat-header-cell *matHeaderCellDef mat-sort-header> Date </mat-header-cell>
-					<mat-cell id="date_and_time{{row.id}}" *matCellDef="let row"> {{row.date_and_time | date:'short'}} </mat-cell>
+        <ng-container matColumnDef="payment_address">
+					<mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Payment Address"> Address </mat-header-cell>
+					<mat-cell id="payment_address{{row.id}}" *matCellDef="let row">
+            <p class="hash">{{row.payment_address}} </p>
+          </mat-cell>
 				</ng-container>
 
         <ng-container matColumnDef="total">
 					<mat-header-cell *matHeaderCellDef mat-sort-header> Payment </mat-header-cell>
-					<mat-cell id="total{{row.id}}" *matCellDef="let row"> {{row.total | number}} XCA</mat-cell>
+					<mat-cell id="total{{row.id}}" *matCellDef="let row">
+            <span matTooltip="{{ row.total }} XCA">
+              {{row.total | number:'1.0-1' }}
+            </span>
+          </mat-cell>
 				</ng-container>
 
 				<ng-container matColumnDef="tx_hash">
-					<mat-header-cell *matHeaderCellDef mat-sort-header> Transaction Hash </mat-header-cell>
+					<mat-header-cell *matHeaderCellDef mat-sort-header>
+            <mat-icon matTooltip="Transaction Hash">pets</mat-icon>
+           </mat-header-cell>
           <mat-cell id="tx_hash{{row.id}}" *matCellDef="let row">
             <a class="text-primary" href="https://explorer.x-cash.org/Transaction?data={{row.tx_hash}}" title="View transaction data" target="_blank">
-              <p class="hash">{{row.tx_hash }}</p>
+              <!-- <p class="hash">{{row.tx_hash }}</p> -->
+              <!-- <button mat-icon-button (click)="functionsService.copyReserveProof(row.tx_key)" aria-label="View Transaction Hash" matTooltip="View Transaction Hash"> -->
+                <em class="material-icons app-toolbar-menu">pageview </em>
+              <!-- </button> -->
             </a>
           </mat-cell>
 				</ng-container>
 
 				<ng-container matColumnDef="tx_key">
-					<mat-header-cell *matHeaderCellDef mat-sort-header> Transaction Key </mat-header-cell>
+					<mat-header-cell *matHeaderCellDef mat-sort-header>
+            <mat-icon matTooltip="Transaction Key">vpn_key</mat-icon>
+          </mat-header-cell>
 					<mat-cell id="tx_key{{row.id}}" *matCellDef="let row">
-            <p class="hash">{{row.tx_key }}</p>
+            <!-- <p class="hash">{{row.tx_key }}</p> -->
+            <button mat-icon-button (click)="functionsService.copyReserveProof(row.tx_key)" aria-label="View Transaction Key" matTooltip="View Transaction Key">
+              <em class="material-icons app-toolbar-menu">pageview </em>
+            </button>
           </mat-cell>
 				</ng-container>
 
