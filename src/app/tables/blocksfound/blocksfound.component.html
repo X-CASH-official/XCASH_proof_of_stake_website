@@ -1,7 +1,7 @@
 <h2 class="page_title">Produced Blocks</h2>
 
 <div fxLayout="row" fxLayout="row wrap">
-    <div *ngFor="let dash of dashCard; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
+    <div *ngFor="let dash of dashCard; let count = index" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="50">
         <cdk-dashcard id="dashcard{{count+1}}" [dashData]="dash"></cdk-dashcard>
     </div>
 </div>
@@ -29,18 +29,26 @@
 				</ng-container>
 
 				<ng-container matColumnDef="block_height">
-					<mat-header-cell *matHeaderCellDef mat-sort-header> Block Height </mat-header-cell>
+					<mat-header-cell *matHeaderCellDef mat-sort-header> Block </mat-header-cell>
                    <mat-cell id="block_height{{row.id}}" *matCellDef="let row"><a class="text-primary" href="http://delegates.xcash.foundation/auth/tables/round_statistics?data={{row.block_height}}" target="_blank"><h3>{{row.block_height | number}}</h3></a></mat-cell>
 				</ng-container>
 
 				<ng-container matColumnDef="block_date_and_time">
-					<mat-header-cell *matHeaderCellDef mat-sort-header> Date and Time </mat-header-cell>
-					<mat-cell id="block_date_and_time{{row.id}}" *matCellDef="let row"> {{row.block_date_and_time | date:'short' : locale}} </mat-cell>
+					<mat-header-cell *matHeaderCellDef mat-sort-header> Date & Time </mat-header-cell>
+					<mat-cell id="block_date_and_time{{row.id}}" *matCellDef="let row">
+            <span matTooltip="{{ row.block_date_and_time | date:'full' }}">
+              {{ row.block_date_and_time | date:'dd/MM/yy HH:mm' }}
+            </span>
+          </mat-cell>
 				</ng-container>
 
 				<ng-container matColumnDef="block_reward">
 					<mat-header-cell *matHeaderCellDef mat-sort-header> Reward </mat-header-cell>
-					<mat-cell id="block_reward{{row.id}}" *matCellDef="let row"> {{row.block_reward | number:'1.0-1' }} XCA</mat-cell>
+					<mat-cell id="block_reward{{row.id}}" *matCellDef="let row">
+            <span matTooltip="{{ row.block_reward }} XCA">
+              {{row.block_reward | number:'1.0-1' }}
+            </span>
+           </mat-cell>
 				</ng-container>
 
         <ng-container matColumnDef="block_hash">

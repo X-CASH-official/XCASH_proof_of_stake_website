@@ -65,7 +65,7 @@ export function highlightJsFactory(): any {
     MatCheckboxModule,
     MatTooltipModule,
     MatChipsModule,
-    MatButtonToggleModule,    
+    MatButtonToggleModule,
     MatCardModule,
     DashboardWidgetModule,
     HighlightJsModule.forRoot({
@@ -81,8 +81,6 @@ export function highlightJsFactory(): any {
 
   exports: [
     ]
-      
+
 })
 export class TablesModule { }
-
-
