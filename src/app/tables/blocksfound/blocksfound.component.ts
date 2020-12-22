@@ -14,7 +14,7 @@ import { MatPaginator, MatSort } from '@angular/material';
   styleUrls: ['./blocksfound.component.scss']
 })
 
-export class blocksfoundComponent implements OnInit {
+export class BlocksfoundComponent implements OnInit {
 
   public dashCard = [
       { ogmeter: true,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'BLOCKS FOUND', icon: 'find_in_page' },

@@ -15,7 +15,7 @@ import { MatPaginator, MatSort } from '@angular/material';
   styleUrls: ['./voterstatistics.component.scss']
 })
 
-export class voterstatisticsComponent implements OnInit {
+export class VoterstatisticsComponent implements OnInit {
 
 	public dashCard1 = [
         { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'CURRENT AMOUNT', icon: 'local_atm' },

@@ -2,25 +2,25 @@ export const menus = [
     {
         'name': 'Dashboard',
         'open': false,
-        'link': '/auth/dashboard',
+        'link': '/dashboard',
         'icon': 'dashboard',
     },
     {
         'name': 'Blocks Produced',
         'open': false,
-        'link': 'tables/blocksfound',
+        'link': '/blocksfound',
         'icon': 'find_in_page',
     },
     {
         'name': 'Voters List',
         'open': false,
-        'link': 'tables/voterslist',
+        'link': '/voters/list',
         'icon': 'grading',
     },
     {
         'name': 'API',
         'open': false,
-        'link': '/auth/API',
+        'link': '/API',
         'icon': 'cloud',
     },
 ];
