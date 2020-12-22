@@ -37,7 +37,7 @@
             <span matTooltip="Public address that created reserve proof">Voters public address</span>
           </mat-header-cell>
 					<mat-cell id="public_address_created_reserve_proof{{row.id}}" *matCellDef="let row">
-            <a class="text-primary" title="View voter statistics" [routerLink]="['/auth/tables/voterstatistics']" [queryParams]="{'data':row.public_address_created_reserve_proof}">
+            <a class="text-primary" title="View voter statistics" [routerLink]="['/voters/statistics']" [queryParams]="{'data':row.public_address_created_reserve_proof}">
                 <p class="hash">{{row.public_address_created_reserve_proof}}</p>
             </a>
           </mat-cell>

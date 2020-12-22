@@ -26,21 +26,13 @@ import { MatPaginatorModule,
          MatButtonToggleModule } from '@angular/material';
 
 
-import * as hljs from 'highlight.js';
-import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
-import * as hljsTypescript from 'highlight.js/lib/languages/typescript';
-import { blocksfoundComponent } from './blocksfound/blocksfound.component';
-import { voterslistComponent } from './voterslist/voterslist.component';
-import { voterstatisticsComponent } from './voterstatistics/voterstatistics.component';
+import { BlocksfoundComponent } from './blocksfound/blocksfound.component';
+import { VoterslistComponent } from './voterslist/voterslist.component';
+import { VoterstatisticsComponent } from './voterstatistics/voterstatistics.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { DashboardWidgetModule } from '../dashboard-widget/dashboard-widget.module';
 
-
-export function highlightJsFactory(): any {
-  hljs.registerLanguage('typescript', hljsTypescript);
-  return hljs;
-}
 
 @NgModule({
   imports: [
@@ -68,16 +60,16 @@ export function highlightJsFactory(): any {
     MatButtonToggleModule,
     MatCardModule,
     DashboardWidgetModule,
-    HighlightJsModule.forRoot({
-      provide: HIGHLIGHT_JS,
-      useFactory: highlightJsFactory
-    }),
+    // HighlightJsModule.forRoot({
+    //   provide: HIGHLIGHT_JS,
+    //   useFactory: highlightJsFactory
+    // }),
     TablesRouterModule
   ],
   declarations: [
-   blocksfoundComponent,
-   voterslistComponent,
-   voterstatisticsComponent],
+   BlocksfoundComponent,
+   VoterslistComponent,
+   VoterstatisticsComponent],
 
   exports: [
     ]

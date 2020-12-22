@@ -6,11 +6,11 @@ import {RouterTestingModule} from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import {HttpdataService} from 'app/services/http-request.service';
 
-import { voterslistComponent } from './voterslist.component';
+import { VoterslistComponent } from './voterslist.component';
 
-describe('voterslistComponent', () => {
-  let component: voterslistComponent;
-  let fixture: ComponentFixture<voterslistComponent>;
+describe('VoterslistComponent', () => {
+  let component: VoterslistComponent;
+  let fixture: ComponentFixture<VoterslistComponent>;
   let test_data: any[] = [
     { id: "1", public_address_created_reserve_proof: 'XCA', total: "0", reserve_proof: "reserve_proof" },
     { id: "2", public_address_created_reserve_proof: 'XCA', total: "0", reserve_proof: "reserve_proof" }
@@ -18,7 +18,7 @@ describe('voterslistComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ voterslistComponent ],
+      declarations: [ VoterslistComponent ],
       imports: [HttpClientTestingModule,RouterTestingModule,MatTableModule],
       providers: [ HttpdataService ],
       schemas: [NO_ERRORS_SCHEMA]
@@ -27,7 +27,7 @@ describe('voterslistComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(voterslistComponent);
+    fixture = TestBed.createComponent(VoterslistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

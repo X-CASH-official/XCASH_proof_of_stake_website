@@ -16,7 +16,7 @@ import { MatPaginator, MatSort } from '@angular/material';
   styleUrls: ['./voterslist.component.scss']
 })
 
-export class voterslistComponent implements OnInit {
+export class VoterslistComponent implements OnInit {
 
 	public dashCard = [
       { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: ' XCA', title: 'VOTE COUNT', icon: 'done_all' },
