@@ -25,16 +25,16 @@ export class AppComponent {
       "@type": "WebSite",
       "@id": this.baseURL + "#website",
       "url": this.baseURL,
-      "name": "X-Cash Delegates Explorer",
-      "alternateName": "Delegates Explorer",
-      "headline": "X-Cash Delegates Explorer for DPoPs nodes.",
+      "name": "X-Cash Delegate Website",
+      "alternateName": "Delegate Website",
+      "headline": "X-Cash Delegate Website.",
       "image": this.metaImage,
       "inLanguage": "en",
-      "description": "X-Cash Delegates Explorer for DPoPs nodes. Check delegates, votes, statistics and blocks information.",
-      "disambiguatingDescription": "Delegates Explorer for X-Cash",
+      "description": "X-Cash Delegate Staking Node. Check your vote, payments, delegate statistics and blocks information.",
+      "disambiguatingDescription": "Delegate Website for X-Cash",
       "isFamilyFriendly": "http://schema.org/True",
       "keywords":[
-        "X-Cash", "Delegates","Explorer","Nodes","Statistics", "Votes", "staking", "shared delegates", "solo delegates", "DPoPS", "XCASH" , "blocks Information"
+        "X-Cash", "Delegate","Website","Node","Statistics", "Votes", "staking", "shared delegate", "private group delegate", "DPoPS", "XCASH" , "block information"
       ],
       "hasPart": [
         {
@@ -65,7 +65,7 @@ export class AppComponent {
         "@context": "https://schema.org",
         "@type":"SiteNavigationElement",
         "@id":"#sidebar",
-        "name": "Delegates",
+        "name": "Delegate",
         "url": this.baseURL + "/delegates"
       },
       {
