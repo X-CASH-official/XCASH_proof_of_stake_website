@@ -1,4 +1,4 @@
-<mat-toolbar   class="mat-elevation-z4">
+<mat-toolbar   class="mat-elevation-z4"  id="header">
 	<button mat-icon-button (click)="sidenav.toggle();drawer.toggle();" *ngIf="matDrawerShow">
         <em class="material-icons app-toolbar-menu">menu </em>
     </button>
@@ -17,12 +17,5 @@
 						<button value='unicorn' mat-menu-item (click)="switchTheme('unicorn')">Unicorn</button>
 						<button value='darksea' mat-menu-item (click)="switchTheme('darksea')">Darksea</button>
 	 </mat-menu>
-    <!-- <button  mat-icon-button (click)="searchOpen = !searchOpen" fxHide="true" [fxHide.gt-xs]="false">
-        <em class="material-icons">search</em>
-    </button> -->
-    <!-- <cdk-search-bar [open]="searchOpen"></cdk-search-bar>
 
-    <cdk-fullscreen></cdk-fullscreen>
-
-		-->
 </mat-toolbar>
