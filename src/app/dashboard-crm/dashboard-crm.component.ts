@@ -25,7 +25,7 @@ export class DashboardCrmComponent implements OnInit {
     public dashCard1 = [
       { ogmeter: false,  width_icon: 20, text_size: 40, text: '', suffix: '',  title: 'VOTE COUNT', icon: 'done_all' },
       { ogmeter: false,  width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'XCASH FROM BLOCKS PRODUCED', icon: 'pageview' },
-      { ogmeter: false, width_icon: 20, text_size: 36, text: '', suffix: '',  title: 'ONLINE STATUS', icon: 'online_prediction' },
+      { ogmeter: false, width_icon: 20, text_size: 36, text: 'Offline', suffix: '',  title: 'ONLINE STATUS', icon: 'online_prediction' },
     ];
     public dashCard2 = [
 
