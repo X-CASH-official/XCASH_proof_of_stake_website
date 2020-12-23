@@ -4,6 +4,7 @@ import { Meta } from '@angular/platform-browser';
 
 import { environment } from './../environments/environment';
 
+import { Schema_Data } from './schema.data';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +16,9 @@ import { environment } from './../environments/environment';
 
 export class AppComponent {
 
-  loading:boolean = true;
-  baseURL:string= environment.baseURL;
+  baseURL:string= environment.baseURL == '' ? window.location.origin : environment.baseURL;
   metaImage:string= this.baseURL + "/assets/icons/apple-touch-icon-180x180.png";
-  static storageKey = 'xcash-pool-theme-preference';
+  storageKey:string = 'xcash-pool-theme-preference';
 
   schema = [{
       "@context": "http://schema.org",
@@ -103,7 +103,6 @@ export class AppComponent {
   }
 
 
-
   ngOnInit() {
 
     this.router.events.subscribe((event) => {
@@ -124,7 +123,7 @@ export class AppComponent {
       window.scrollTo(0, 0);
     });
 
-    var theme = window.localStorage.getItem('xcash-explorer-theme-preference');
+    var theme = window.localStorage.getItem(this.storageKey);
     if (theme) {
       let body = document.getElementsByTagName('body')[0];
       body.classList.remove("dark-theme","light-theme","unicorn-theme","darksea-theme");   //remove theme class

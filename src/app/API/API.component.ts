@@ -16,6 +16,7 @@ export class APIComponent implements OnInit {
     delegates_data:string = "";
     apiData:any;
 
+
     constructor(private titleService:Title) {
         this.titleService.setTitle(" API - Delegates Explorer - X-CASH");
      }
@@ -23,10 +24,11 @@ export class APIComponent implements OnInit {
     ngOnInit() {
 
       let data = API_DATA;
+      var baseURL:string = environment.baseURL == '' ? window.location.origin : environment.baseURL;
 
       Object.keys(data).forEach(function(key) {
 
-        var request_url = environment.baseURL + data[key].url;
+        var request_url = baseURL + data[key].url;
 
         if (data[key].hasOwnProperty('parameters') ) {
           request_url = request_url + '?';
