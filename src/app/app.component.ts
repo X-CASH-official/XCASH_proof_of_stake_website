@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavigationStart, NavigationEnd, Router } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
 
