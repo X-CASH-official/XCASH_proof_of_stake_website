@@ -14,6 +14,7 @@ import { environment } from './../environments/environment';
 
 export class AppComponent {
 
+  loading:boolean = true;
   baseURL:string= environment.baseURL == '' ? window.location.origin : environment.baseURL;
   metaImage:string= this.baseURL + "/assets/icons/apple-touch-icon-180x180.png";
   storageKey:string = 'xcash-pool-theme-preference';
