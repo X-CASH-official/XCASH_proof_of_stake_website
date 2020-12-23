@@ -72,10 +72,7 @@
            </mat-header-cell>
           <mat-cell id="tx_hash{{row.id}}" *matCellDef="let row">
             <a class="text-primary" href="https://explorer.x-cash.org/Transaction?data={{row.tx_hash}}" title="View transaction data" target="_blank">
-              <!-- <p class="hash">{{row.tx_hash }}</p> -->
-              <!-- <button mat-icon-button (click)="functionsService.copyReserveProof(row.tx_key)" aria-label="View Transaction Hash" matTooltip="View Transaction Hash"> -->
                 <em class="material-icons app-toolbar-menu">pageview </em>
-              <!-- </button> -->
             </a>
           </mat-cell>
 				</ng-container>
@@ -85,7 +82,6 @@
             <mat-icon matTooltip="Transaction Key">vpn_key</mat-icon>
           </mat-header-cell>
 					<mat-cell id="tx_key{{row.id}}" *matCellDef="let row">
-            <!-- <p class="hash">{{row.tx_key }}</p> -->
             <button mat-icon-button (click)="functionsService.copyReserveProof(row.tx_key)" aria-label="View Transaction Key" matTooltip="View Transaction Key">
               <em class="material-icons app-toolbar-menu">pageview </em>
             </button>
