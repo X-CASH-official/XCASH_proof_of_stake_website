@@ -21,14 +21,14 @@ describe('HttpdataService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Test GET request',inject([HttpTestingController, HttpdataService],(httpMock: HttpTestingController, HttpdataService: HttpdataService) => {
-   HttpdataService.get_request(HttpdataService.POOL_GET_STATISTICS).subscribe((event: HttpEvent<any>) => {
+  it('Test GET request',inject([HttpTestingController, HttpdataService],(httpMock: HttpTestingController, httpdataservice: HttpdataService) => {
+   httpdataservice.get_request(httpdataservice.POOL_GET_STATISTICS).subscribe((event: HttpEvent<any>) => {
      switch (event.type) {
        case HttpEventType.Response:
           }
         });
 
-        const mockReq = httpMock.match(HttpdataService.POOL_GET_STATISTICS);
+        const mockReq = httpMock.match(httpdataservice.POOL_GET_STATISTICS);
          expect(mockReq.slice(-1)[0].cancelled).toBeFalsy();
          expect(mockReq.slice(-1)[0].request.method).toBe('GET');
          expect(mockReq.slice(-1)[0].request.responseType).toEqual('json');
@@ -37,14 +37,14 @@ describe('HttpdataService', () => {
         httpMock.verify();
   }));
 
-  it('Test POST request',inject([HttpTestingController, HttpdataService],(httpMock: HttpTestingController, HttpdataService: HttpdataService) => {
-   HttpdataService.post_request(HttpdataService.POOL_GET_STATISTICS,"DATA").subscribe((event: HttpEvent<any>) => {
+  it('Test POST request',inject([HttpTestingController, HttpdataService],(httpMock: HttpTestingController, httpdataservice: HttpdataService) => {
+   httpdataservice.post_request(httpdataservice.POOL_GET_STATISTICS,"DATA").subscribe((event: HttpEvent<any>) => {
      switch (event.type) {
        case HttpEventType.Response:
           }
         });
 
-        const mockReq = httpMock.match(HttpdataService.POOL_GET_STATISTICS);
+        const mockReq = httpMock.match(httpdataservice.POOL_GET_STATISTICS);
          expect(mockReq.slice(-1)[0].cancelled).toBeFalsy();
          expect(mockReq.slice(-1)[0].request.method).toBe('POST');
          expect(mockReq.slice(-1)[0].request.responseType).toEqual('json');
