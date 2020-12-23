@@ -69,8 +69,8 @@ export class BlocksfoundComponent implements OnInit {
         );
 
         this.httpdataservice.get_request(this.httpdataservice.POOL_GET_STATISTICS).subscribe(
-          (res) => {
-            var data = JSON.parse(JSON.stringify(res));
+          (response) => {
+            var data = JSON.parse(JSON.stringify(response));
             this.total_average = ((parseInt(data.block_verifier_total_rounds)/(100*this.total_blocks_found))*100) | 0;
             this.dashCard[0].text = data.length;
             this.dashCard[1].text = this.total_average;
