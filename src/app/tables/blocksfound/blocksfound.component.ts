@@ -43,7 +43,7 @@ export class BlocksfoundComponent implements OnInit {
   	  {
         this.exampleDatabase = new ExampleDatabase();
         var data = JSON.parse(JSON.stringify(res));
-        var count = 0;
+        var count;
         var block_reward;
 
         this.total_blocks_found = data.length;
