@@ -365,7 +365,8 @@ $spin_background-darksea: mat-palette($warning-darksea, 900, 0.9);
     padding:  10px 5px;
   }
   .components-container-xs {
-    padding: 5px !important;
+    //padding: 5px !important;
+    padding:  10px 5px;
   }
   .component-preview {
     padding: 20px;
@@ -470,6 +471,3 @@ a{
 .hide_th { height: 1px; border: none }
 .offscreen { height: 1px; width: 1px; position: absolute; overflow: hidden; top: -10px; }
 .mat-tooltip{ font-size: 1.0rem; }
-.components-container-gt-xs{
-	padding:  10px 5px;
-}
