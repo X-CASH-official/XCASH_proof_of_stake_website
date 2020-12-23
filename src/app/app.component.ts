@@ -4,8 +4,6 @@ import { Meta } from '@angular/platform-browser';
 
 import { environment } from './../environments/environment';
 
-import { Schema_Data } from './schema.data';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
