@@ -1,4 +1,4 @@
-import {fromEvent as observableFromEvent,  Observable } from 'rxjs';
+import {fromEvent as observableFromEvent } from 'rxjs';
 import {distinctUntilChanged, debounceTime} from 'rxjs/operators';
 
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
@@ -50,12 +50,12 @@ export class VoterslistComponent implements OnInit {
 
         // get the data
         this.httpdataservice.get_request(this.httpdataservice.POOL_GET_DELEGATES_VOTERS_LIST + "?parameter1=" + this.public_address).subscribe(
-          (res) => {
+          (response) => {
             this.exampleDatabase = new ExampleDatabase();
-            var data = JSON.parse(JSON.stringify(res));
+            var data = JSON.parse(JSON.stringify(response));
             this.total_vote_count = 0;
             this.amount_of_votes = data.length;
-            var count = 0;
+            var count;
             var total = 0;
             for (count = 0; count < this.amount_of_votes; count++) {
               total = parseInt(data[count].total) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
