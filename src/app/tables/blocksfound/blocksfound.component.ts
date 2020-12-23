@@ -30,7 +30,7 @@ export class BlocksfoundComponent implements OnInit {
 	public dataSource: ExampleDataSource | null;
 	public showFilterTableCode;
 
-	constructor(private HttpdataService: HttpdataService) { }
+	constructor(private httpdataservice: HttpdataService) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
@@ -38,7 +38,7 @@ export class BlocksfoundComponent implements OnInit {
 
 	ngOnInit() {
     // get the data
-    this.HttpdataService.get_request(this.HttpdataService.POOL_GET_BLOCKS_FOUND).subscribe(
+    this.httpdataservice.get_request(this.httpdataservice.POOL_GET_BLOCKS_FOUND).subscribe(
   	  (res) =>
   	  {
         this.exampleDatabase = new ExampleDatabase();
@@ -49,7 +49,7 @@ export class BlocksfoundComponent implements OnInit {
         this.total_blocks_found = data.length;
 
         for (count = 0; count < data.length; count++) {
-          block_reward = parseInt(data[count].block_reward) / this.HttpdataService.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+          block_reward = parseInt(data[count].block_reward) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
   	      this.exampleDatabase.addUser((count + 1).toString(),data[count].block_height.toString(),data[count].block_hash.toString(),(parseInt(data[count].block_date_and_time) * 1000).toString(),block_reward.toString());
   	    }
 
@@ -68,7 +68,7 @@ export class BlocksfoundComponent implements OnInit {
           }
         );
 
-        this.HttpdataService.get_request(this.HttpdataService.POOL_GET_STATISTICS).subscribe(
+        this.httpdataservice.get_request(this.httpdataservice.POOL_GET_STATISTICS).subscribe(
           (res) => {
             var data = JSON.parse(JSON.stringify(res));
             this.total_average = ((parseInt(data.block_verifier_total_rounds)/(100*this.total_blocks_found))*100) | 0;
