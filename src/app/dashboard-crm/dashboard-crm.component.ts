@@ -60,7 +60,6 @@ export class DashboardCrmComponent implements OnInit {
         (res) =>
         {
           var info_data = JSON.parse(JSON.stringify(res));
-          let xcash_wallet_decimal_places_amount = this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
           var block_producer_block_heights = info_data.block_producer_block_heights.split("|");
           var count = 0;
 
@@ -86,7 +85,7 @@ export class DashboardCrmComponent implements OnInit {
           this.dashCard4[1].text = block_producer_block_heights.length > 0 ? parseInt(info_data.block_verifier_total_rounds) / block_producer_block_heights.length : "0";
 
           this.dashCard5[0].text = parseInt(info_data.block_verifier_online_total_rounds);
-          this.dashCard5[1].text = info_data.block_verifier_total_rounds; //parseInt(info_data.block_verifier_total_rounds);
+          this.dashCard5[1].text = info_data.block_verifier_total_rounds; 
           this.dashCard5[2].text = parseInt(info_data.block_producer_total_rounds);
 
         },
