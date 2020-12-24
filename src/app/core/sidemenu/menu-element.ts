@@ -6,7 +6,7 @@ export const menus = [
         'icon': 'dashboard',
     },
     {
-        'name': 'Blocks Found',
+        'name': 'Blocks Produced',
         'open': false,
         'link': '/blocksfound',
         'icon': 'find_in_page',
