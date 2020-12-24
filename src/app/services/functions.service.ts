@@ -45,11 +45,7 @@ export class FunctionsService {
    document.execCommand('copy');
    document.body.removeChild(selBox);
    //Swal.fire(val,"The reserve proof has been copied to the clipboard");
-   Swal.fire({
-      width: 600,
-      title: '<strong>The reserve proof has been copied to the clipboard</strong>',
-      html: '<code>' + val + '</code>',
-    })
+   val.includes("ReserveProofV1") ? Swal.fire({width: 600,title: '<strong>The reserve proof has been copied to the clipboard</strong>',html: '<code>' + val + '</code>',}) : Swal.fire({width: 600,title: '<strong>The tx key has been copied to the clipboard</strong>',html: '<code>' + val + '</code>',})
   }
 
 }
