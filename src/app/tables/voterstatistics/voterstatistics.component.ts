@@ -5,6 +5,7 @@ import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import {HttpdataService} from '../../services/http-request.service';
+import { FunctionsService } from '../../services/functions.service';
 import Swal from 'sweetalert2';
 
 import { MatPaginator, MatSort } from '@angular/material';
@@ -18,12 +19,12 @@ import { MatPaginator, MatSort } from '@angular/material';
 export class VoterstatisticsComponent implements OnInit {
 
 	public dashCard1 = [
-        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'CURRENT AMOUNT', icon: 'local_atm' },
-        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'TOTAL AMOUNT PAID', icon: 'monetization_on' }
+        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: ' XCA', title: 'CURRENT UNPAID AMOUNT', icon: 'local_atm' },
+        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: ' XCA', title: 'TOTAL AMOUNT PAID', icon: 'monetization_on' }
     ];
 
   public dashCard2 = [
-        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: ' XCA', title: 'TOTAL NUMBER OF PAYMENTS', icon: 'payments' },
+        { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'TOTAL NUMBER OF PAYMENTS', icon: 'payments' },
         { ogmeter: true, width_icon: 20, text_size: 40, text: 0, suffix: '', title: 'INACTIVITY TOTAL', icon: 'error' }
     ];
 
@@ -41,7 +42,7 @@ export class VoterstatisticsComponent implements OnInit {
   length;
   voter_public_address;
 
-	constructor(private route: ActivatedRoute, private httpdataservice: HttpdataService) { }
+	constructor(private route: ActivatedRoute, private httpdataservice: HttpdataService, public functionsService: FunctionsService) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
