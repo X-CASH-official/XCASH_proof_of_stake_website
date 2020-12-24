@@ -42,20 +42,20 @@ export class BlocksfoundComponent implements OnInit {
   	  (res) =>
   	  {
         this.exampleDatabase = new ExampleDatabase();
-        var data = JSON.parse(JSON.stringify(res));
+        var block_data = JSON.parse(JSON.stringify(res));
         var count;
         var block_reward;
 
-        this.total_blocks_found = data.length;
+        this.total_blocks_found = block_data.length;
 
-        for (count = 0; count < data.length; count++) {
-          block_reward = parseInt(data[count].block_reward) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
-  	      this.exampleDatabase.addUser((count + 1).toString(),data[count].block_height.toString(),data[count].block_hash.toString(),(parseInt(data[count].block_date_and_time) * 1000).toString(),block_reward.toString());
+        for (count = 0; count < block_data.length; count++) {
+          block_reward = parseInt(block_data[count].block_reward) / this.httpdataservice.XCASH_WALLET_DECIMAL_PLACES_AMOUNT;
+  	      this.exampleDatabase.addUser((count + 1).toString(),block_data[count].block_height.toString(),block_data[count].block_hash.toString(),(parseInt(block_data[count].block_date_and_time) * 1000).toString(),block_reward.toString());
   	    }
 
-        this.dashCard[0].text = data.length;
+        this.dashCard[0].text = block_data.length;
   	    //this.dataSource = new ExampleDataSource(this.exampleDatabase);
-        this.length =  data.length;
+        this.length =  block_data.length;
         this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
 
         //console.log(this.dataSource);

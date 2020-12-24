@@ -45,8 +45,8 @@ export class VoterslistComponent implements OnInit {
     // get the data
     this.httpdataservice.get_request(this.httpdataservice.POOL_GET_STATISTICS).subscribe(
       (res) =>   {
-        var data = JSON.parse(JSON.stringify(res));
-        this.public_address = data.public_address;
+        var pool_data = JSON.parse(JSON.stringify(res));
+        this.public_address = pool_data.public_address;
 
         // get the data
         this.httpdataservice.get_request(this.httpdataservice.POOL_GET_DELEGATES_VOTERS_LIST + "?parameter1=" + this.public_address).subscribe(
