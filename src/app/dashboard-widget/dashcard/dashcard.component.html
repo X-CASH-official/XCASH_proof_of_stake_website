@@ -7,11 +7,11 @@
     <div [fxFlex]="100 - dashData?.width_icon" fxLayout="column" fxLayoutAlign="center center" [style.background]="dashData?.colorDark"  class="dashcard_box">
 
         <div *ngIf="dashData?.ogmeter === true" [style.fontSize.px]="dashData?.text_size">
-            <ng2-odometer [number]="dashData?.text" [config]="{ }"></ng2-odometer> {{dashData?.suffix}}
+            <ng2-odometer [number]="dashData?.text" [config]="{ }"></ng2-odometer> <span style="vertical-align: middle;"> {{dashData?.suffix}}</span>
         </div>
 
         <div *ngIf="dashData?.ogmeter === false" [style.fontSize.px]="dashData?.text_size">
-              <span class="odometer-digit">{{dashData?.text}}</span> {{dashData?.suffix}}
+              <span class="odometer-digit">{{dashData?.text}}</span> {{ dashData?.suffix }}
         </div>
 
         <p class="mat-body-1 border-top" >
