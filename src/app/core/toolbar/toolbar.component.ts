@@ -23,7 +23,7 @@ export class ToolbarComponent implements OnInit {
     let body = document.getElementsByTagName('body')[0];
     body.classList.remove("dark-theme","light-theme","unicorn-theme","darksea-theme");   //remove theme class
     body.classList.add(appId + "-theme");   //add selected theme
-    window.localStorage.setItem('xcash-explorer-theme-preference', appId );
+    window.localStorage.setItem('xcash-pool-theme-preference', appId );
   }
 
 	constructor() { }
