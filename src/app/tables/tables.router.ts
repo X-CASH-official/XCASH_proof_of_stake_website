@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { blocksfoundComponent } from './blocksfound/blocksfound.component';
-import { voterslistComponent } from './voterslist/voterslist.component';
-import { voterstatisticsComponent } from './voterstatistics/voterstatistics.component';
+import { BlocksfoundComponent } from './blocksfound/blocksfound.component';
+import { VoterslistComponent } from './voterslist/voterslist.component';
+import { VoterstatisticsComponent } from './voterstatistics/voterstatistics.component';
 
 const materialWidgetRoutes: Routes = [
-        { path: 'blocksfound', component: blocksfoundComponent , data: { animation: 'fixed' }},
-        { path: 'voterslist', component: voterslistComponent , data: { animation: 'fixed' }},
-        { path: 'voterstatistics', component: voterstatisticsComponent , data: { animation: 'fixed' }},
+        { path: '', component: BlocksfoundComponent , data: { animation: 'fixed' }},
+        { path: 'list', component: VoterslistComponent , data: { animation: 'fixed' }},
+        { path: 'statistics', component: VoterstatisticsComponent , data: { animation: 'fixed' }},
 ];
 
 @NgModule({

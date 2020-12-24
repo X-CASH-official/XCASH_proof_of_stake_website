@@ -1,39 +1,46 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
+import { environment } from './../../environments/environment';
+
 @Injectable()
-export class httpdataservice{
-constructor(private httpClient: HttpClient) {}
+export class HttpdataService{
+  constructor(private httpClient: HttpClient) {}
 
-SERVER_HOSTNAME_AND_PORT_GET_STATISTICS:string = "/shareddelegateswebsitegetstatistics";
-SERVER_HOSTNAME_AND_PORT_GET_BLOCKS_FOUND:string = "/getblocksfound";
-SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_INFORMATION:string = "/getpublicaddressinformation";
-SERVER_HOSTNAME_AND_PORT_GET_DELEGATES_VOTERS_LIST:string = "/getdelegatesvoterslist";
-SERVER_HOSTNAME_AND_PORT_GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION:string = "/getpublicaddresspaymentinformation";
-XCASH_WALLET_DECIMAL_PLACES_AMOUNT:number = 1000000;
 
-Timer:any;
+  POOL_GET_STATISTICS:string = environment.node_apiEndPoint + "/shareddelegateswebsitegetstatistics";
+  POOL_GET_BLOCKS_FOUND:string = environment.node_apiEndPoint + "/getblocksfound";
+  POOL_GET_PUBLIC_ADDRESS_INFORMATION:string = environment.node_apiEndPoint + "/getpublicaddressinformation";
+  POOL_GET_DELEGATES_VOTERS_LIST:string = environment.node_apiEndPoint + "/getdelegatesvoterslist";
+  POOL_GET_PUBLIC_ADDRESS_PAYMENT_INFORMATION:string = environment.node_apiEndPoint + "/getpublicaddresspaymentinformation";
 
-sleep(milliseconds)
-{
-  return new Promise(resolve => setTimeout(resolve, milliseconds));
-}
+  EXPLORER_GET_DELEGATES_STATISTICS:string =  environment.explorer_apiEndPoint + "/getdelegatesstatistics";
+  EXPLORER_GET_DELEGATE_WEBSITE_STATISTICS:string =  environment.explorer_apiEndPoint + "/delegateswebsitegetstatistics";
 
-get_request(url:string)
-{
-return this.httpClient.get(url);
-}
+  XCASH_WALLET_DECIMAL_PLACES_AMOUNT:number = 1000000;
+  BLOCK_TIME:number = 5;
+  Timer:any;
 
-post_request(url:string, data:string)
-{
-const headers = new HttpHeaders ({'Content-Type':'application/x-www-form-urlencoded'});
-return this.httpClient.post(url,data, {headers: headers});
-}
+  sleep(milliseconds)
+  {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+  }
 
-post_request_json(item: any[])
-{
-const headers = new HttpHeaders ({'Content-Type':'application/json'});
-return this.httpClient.post('url',item, {headers: headers});
-}
+  get_request(url:string)
+  {
+    return this.httpClient.get(url);
+  }
+
+  post_request(url:string, data:string)
+  {
+    const headers = new HttpHeaders ({'Content-Type':'application/x-www-form-urlencoded'});
+    return this.httpClient.post(url,data, {headers: headers});
+  }
+
+  post_request_json(item: any[])
+  {
+    const headers = new HttpHeaders ({'Content-Type':'application/json'});
+    return this.httpClient.post('url',item, {headers: headers});
+  }
 
 }

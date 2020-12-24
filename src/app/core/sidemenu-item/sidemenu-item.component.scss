@@ -8,6 +8,9 @@
 }
 
 @mixin sidemenu-item($theme,$icon-size) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
     .sidenav-dropdown-indicator {
         transition: transform .25s;
         &.indicateOpen {

@@ -1,18 +1,23 @@
-<div fxLayout="row"  class="dashcard mat-elevation-z4 "  >
-    <div fxFlex="40" fxLayout="row"  fxLayoutAlign="center center" [style.background]="dashData?.colorLight">
-        <mat-icon  class="cardIcon">{{dashData?.icon}}</mat-icon>
+<div fxLayout="row"  class="dashcard mat-elevation-z4">
+
+    <div *ngIf="dashData?.width_icon > 0"  [fxFlex]="dashData?.width_icon"   fxLayout="row"  fxLayoutAlign="center center" [style.background]="dashData?.colorLight" class="dashcard_icon">
+        <mat-icon  class="cardIcon" >{{dashData?.icon}}</mat-icon>
     </div>
-    <div  fxFlex="60" fxLayout="column" fxLayoutAlign="center center" [style.background]="dashData?.colorDark" >
-         
-        <div *ngIf="dashData?.settings === true" style="color: white;font-size: 40px">
-            <ng2-odometer [number]="dashData?.number" [config]="{ }"></ng2-odometer>
-        </div>
-        <div *ngIf="dashData?.settings === false" style="color: white;font-size: 20px">
-            <p>{{dashData?.number}}</p>
+
+    <div [fxFlex]="100 - dashData?.width_icon" fxLayout="column" fxLayoutAlign="center center" [style.background]="dashData?.colorDark"  class="dashcard_box">
+
+        <div *ngIf="dashData?.ogmeter === true" [style.fontSize.px]="dashData?.text_size">
+            <ng2-odometer [number]="dashData?.text" [config]="{ }"></ng2-odometer> <span style="vertical-align: middle;"> {{dashData?.suffix}}</span>
         </div>
 
-        <p class="mat-body-1 border-top">
+        <div *ngIf="dashData?.ogmeter === false" [style.fontSize.px]="dashData?.text_size">
+              <span class="odometer-digit">{{dashData?.text}}</span> {{ dashData?.suffix }}
+        </div>
+
+        <p class="mat-body-1 border-top" >
             {{dashData?.title}}
         </p>
+
     </div>
+
 </div>

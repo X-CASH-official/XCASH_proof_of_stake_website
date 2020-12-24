@@ -4,13 +4,13 @@ import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import { MatTableModule } from '@angular/material';
 import {RouterTestingModule} from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import {httpdataservice} from 'app/services/http-request.service';
+import {HttpdataService} from 'app/services/http-request.service';
 
-import { voterstatisticsComponent } from './voterstatistics.component';
+import { VoterstatisticsComponent } from './voterstatistics.component';
 
-describe('voterstatisticsComponent', () => {
-  let component: voterstatisticsComponent;
-  let fixture: ComponentFixture<voterstatisticsComponent>;
+describe('VoterstatisticsComponent', () => {
+  let component: VoterstatisticsComponent;
+  let fixture: ComponentFixture<VoterstatisticsComponent>;
   let test_data: any[] = [
     { id: "1", date_and_time: '100', tx_hash: "data", tx_key: "0", total: "0" },
     { id: "2", date_and_time: '100', tx_hash: "data", tx_key: "0", total: "0" }
@@ -18,16 +18,16 @@ describe('voterstatisticsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ voterstatisticsComponent ],
+      declarations: [ VoterstatisticsComponent ],
       imports: [HttpClientTestingModule,RouterTestingModule,MatTableModule],
-      providers: [ httpdataservice ],
+      providers: [ HttpdataService ],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(voterstatisticsComponent);
+    fixture = TestBed.createComponent(VoterstatisticsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

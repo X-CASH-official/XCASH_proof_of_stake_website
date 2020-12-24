@@ -4,13 +4,13 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatTableModule } from '@angular/material';
 import {RouterTestingModule} from '@angular/router/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import {httpdataservice} from 'app/services/http-request.service';
+import {HttpdataService} from 'app/services/http-request.service';
 
-import { voterslistComponent } from './voterslist.component';
+import { VoterslistComponent } from './voterslist.component';
 
-describe('voterslistComponent', () => {
-  let component: voterslistComponent;
-  let fixture: ComponentFixture<voterslistComponent>;
+describe('VoterslistComponent', () => {
+  let component: VoterslistComponent;
+  let fixture: ComponentFixture<VoterslistComponent>;
   let test_data: any[] = [
     { id: "1", public_address_created_reserve_proof: 'XCA', total: "0", reserve_proof: "reserve_proof" },
     { id: "2", public_address_created_reserve_proof: 'XCA', total: "0", reserve_proof: "reserve_proof" }
@@ -18,16 +18,16 @@ describe('voterslistComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ voterslistComponent ],
+      declarations: [ VoterslistComponent ],
       imports: [HttpClientTestingModule,RouterTestingModule,MatTableModule],
-      providers: [ httpdataservice ],
+      providers: [ HttpdataService ],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(voterslistComponent);
+    fixture = TestBed.createComponent(VoterslistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -36,11 +36,11 @@ describe('voterslistComponent', () => {
   it('should create', () => expect(component).toBeTruthy());
 
   it('should create dash card one', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard1')).toBeTruthy());
-  it('should set dash card ones title', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard1').dashData.title).toBe('TOTAL VOTES'));
+  it('should set dash card ones title', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard1').dashData.title).toBe('VOTE COUNT'));
   it('should set dash card ones property to a number', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard1').dashData.number).toBe(0));
 
   it('should create dash card two', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard2')).toBeTruthy());
-  it('should set dash card twos title', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard2').dashData.title).toBe('TOTAL VOTERS'));
+  it('should set dash card twos title', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard2').dashData.title).toBe('VOTERS'));
   it('should set dash card twos property to a number', () => expect(fixture.debugElement.nativeElement.querySelector('#dashcard2').dashData.number).toBe(0));
 
   it('should create reserve_proofs table', () => expect(fixture.debugElement.nativeElement.querySelector('#reserve_proofs_table')).toBeTruthy());

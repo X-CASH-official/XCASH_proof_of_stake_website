@@ -4,6 +4,7 @@ import {merge as observableMerge,  BehaviorSubject ,  Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
 import { DataSource } from '@angular/cdk/collections';
 import { blocksfounddata } from '../interfaces';
+import {MatPaginator, MatSort} from '@angular/material';
 
  /** An example database that the data source uses to retrieve data for the table. */
 export class ExampleDatabase {
@@ -12,7 +13,7 @@ export class ExampleDatabase {
   get data(): blocksfounddata[] { return this.dataChange.value; }
 
   constructor() {
-   
+
   }
 
   /** Adds a new user to the database. */
@@ -47,24 +48,68 @@ export class ExampleDataSource extends DataSource<any> {
   get filter(): string { return this._filterChange.value; }
   set filter(filter: string) { this._filterChange.next(filter); }
 
-  constructor(private _exampleDatabase: ExampleDatabase) {
+  filteredData: blocksfounddata[] = [];
+  renderedData: blocksfounddata[] = [];
+
+  constructor(private _exampleDatabase: ExampleDatabase,
+              private _paginator: MatPaginator,
+              private _sort: MatSort) {
     super();
+    // Reset to the first page when the user changes the filter.
+    this._filterChange.subscribe(() => this._paginator.pageIndex = 0);
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect(): Observable<blocksfounddata[]> {
     const displayDataChanges = [
       this._exampleDatabase.dataChange,
+      this._sort.sortChange,
       this._filterChange,
+      this._paginator.page,
     ];
 
     return observableMerge(...displayDataChanges).pipe(map(() => {
-      return this._exampleDatabase.data.slice().filter((item: blocksfounddata) => {
+
+
+      // Filter data
+      this.filteredData = this._exampleDatabase.data.slice().filter((item: blocksfounddata) => {
         let searchStr = (item.block_height + item.block_hash).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) != -1;
       });
+
+      // Sort filtered data
+      const sortedData = this.sortData(this.filteredData.slice());
+
+      // Grab the page's slice of the filtered sorted data.
+      const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
+      this.renderedData = sortedData.splice(startIndex, this._paginator.pageSize);
+      return this.renderedData;
+
     }));
   }
 
   disconnect() {}
+
+  /** Returns a sorted copy of the database data. */
+  sortData(data: blocksfounddata[]): blocksfounddata[] {
+    if (!this._sort.active || this._sort.direction == '') { return data; }
+
+    return data.sort((a, b) => {
+      let propertyA: number|string = '';
+      let propertyB: number|string = '';
+
+
+      switch (this._sort.active) {
+        case 'id': [propertyA, propertyB] = [a.id, b.id]; break;
+        case 'block_height': [propertyA, propertyB] = [a.block_height, b.block_height]; break;
+        case 'block_date_and_time': [propertyA, propertyB] = [a.block_date_and_time, b.block_date_and_time]; break;
+        case 'block_reward': [propertyA, propertyB] = [a.block_reward, b.block_reward]; break;
+      }
+
+      let valueA = isNaN(+propertyA) ? propertyA : +propertyA;
+      let valueB = isNaN(+propertyB) ? propertyB : +propertyB;
+
+      return (valueA < valueB ? -1 : 1) * (this._sort.direction == 'asc' ? 1 : -1);
+    });
+  }
 }

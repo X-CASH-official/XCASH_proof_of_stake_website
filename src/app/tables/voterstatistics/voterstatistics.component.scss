@@ -1,48 +1,77 @@
+.mat-toolbar-single-row{
+	height: 75px;
+}
+.mat-form-field {
+		font-weight: 500;
+		line-height: normal;
+		font-family: Roboto, "Helvetica Neue", sans-serif;
+		padding: 0px;
+		margin:0;
 
-.table-container {
-position: relative;
-margin-top:50px;
-padding: 5px 15px 15px 15px;
-}
-.table-container .mat-table {
-max-height: calc(100vh - 200px);
-overflow-y: auto;
-}
-.table-container .mat-table .mat-header-row {
-position: absolute;
-top: -50px;
-left: 0px;
-right: 18px;
-background: #fff;
-}
-.table-header {
-	background-color: #039be5;
-	color: white;
-	padding: 0 5px;
-}
-.table-component-holder {
-	border: 1px solid #039be5;
-	background-color: white;
+		width: 100%;
 }
 
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {text-align: center !important; margin-left: 52px !important;}
+
+
+p.hash {
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow:    ellipsis;
+}
+
+.mat-cell, .mat-header-cell {
+    overflow-wrap: break-word;
+		word-wrap: break-word;
+
+    -ms-word-break: break-word;
+    word-break: break-word;
+
+    -ms-hyphens: manual;
+    -moz-hyphens: manual;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+}
+
+// flex: <'flex-grow'> <'flex-shrink'> <'flex-basis'>
 .mat-column-ID {
-  flex: 0 0 5%;
-}
-.mat-column-payment_name {
-  flex: 0 0 10%;
-}
-.mat-column-payment_address {
-  flex: 0 0 25%;
+	flex: 1 0 34px;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
 }
 .mat-column-date_and_time {
-  flex: 0 0 10%;
-}
-.mat-column-tx_hash {
-  flex: 0 0 45%;
-}
-.mat-column-tx_key {
-  flex: 0 0 45%;
+  flex: 1 1 130px;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
 }
 .mat-column-total {
-  flex: 0 0 10%;
+  flex: 1 1 80px;
 }
+.mat-column-payment_name {
+  flex: 1 1 10%;
+}
+.mat-column-payment_address {
+	flex: 4 1 40%;
+	padding-right: 10px;
+}
+.mat-column-tx_hash {
+	flex: 2 1 24px;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+.mat-column-tx_key {
+	flex: 2 1 24px;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+
+
+mat-cell:first-of-type, mat-footer-cell:first-of-type, mat-header-cell:first-of-type { padding-left: 6px;}
+mat-footer-cell:last-of-type, mat-header-cell:last-of-type  { padding-right: 0px;}
+mat-cell:last-of-type  { padding-right: 6px;}
