@@ -5,7 +5,7 @@ import { DashboardCrmComponent } from './dashboard-crm.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { DashboardWidgetModule } from '../dashboard-widget/dashboard-widget.module';
-import { MatTooltipModule } from '@angular/material';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 
 

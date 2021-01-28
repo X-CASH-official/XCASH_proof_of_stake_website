@@ -5,7 +5,8 @@ import {map} from 'rxjs/operators';
 import { DataSource } from '@angular/cdk/collections';
 import { voterstatisticsdata } from '../interfaces';
 
-import {MatPaginator, MatSort} from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
  /** An example database that the data source uses to retrieve data for the table. */
 export class ExampleDatabase {
